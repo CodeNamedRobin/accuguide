@@ -1,0 +1,1081 @@
+{
+  "totalFiles": 153,
+  "totalLines": 11246,
+  "totalSource": 10103,
+  "totalComments": 468,
+  "totalEmpty": 781,
+  "fileMetrics": [
+    {
+      "file": "components/admin/types-categories-indicators.tsx",
+      "lines": 712,
+      "source": 689,
+      "comments": 12,
+      "empty": 21
+    },
+    {
+      "file": "components/admin/information.tsx",
+      "lines": 522,
+      "source": 503,
+      "comments": 9,
+      "empty": 16
+    },
+    {
+      "file": "app/legal/terms/page.tsx",
+      "lines": 389,
+      "source": 380,
+      "comments": 0,
+      "empty": 9
+    },
+    {
+      "file": "components/settings/settings.tsx",
+      "lines": 368,
+      "source": 324,
+      "comments": 28,
+      "empty": 21
+    },
+    {
+      "file": "components/reviews/review-write.tsx",
+      "lines": 283,
+      "source": 268,
+      "comments": 3,
+      "empty": 14
+    },
+    {
+      "file": "lib/db/seed.ts",
+      "lines": 266,
+      "source": 259,
+      "comments": 5,
+      "empty": 7
+    },
+    {
+      "file": "components/ui/dropdown-menu.tsx",
+      "lines": 262,
+      "source": 244,
+      "comments": 0,
+      "empty": 18
+    },
+    {
+      "file": "lib/db/schema.ts",
+      "lines": 223,
+      "source": 208,
+      "comments": 2,
+      "empty": 15
+    },
+    {
+      "file": "app/legal/privacy/page.tsx",
+      "lines": 195,
+      "source": 179,
+      "comments": 0,
+      "empty": 16
+    },
+    {
+      "file": "components/reviews/review-item.tsx",
+      "lines": 193,
+      "source": 175,
+      "comments": 3,
+      "empty": 16
+    },
+    {
+      "file": "components/ui/select.tsx",
+      "lines": 187,
+      "source": 174,
+      "comments": 0,
+      "empty": 13
+    },
+    {
+      "file": "components/ui/command.tsx",
+      "lines": 184,
+      "source": 172,
+      "comments": 0,
+      "empty": 12
+    },
+    {
+      "file": "components/forms/signup-form.tsx",
+      "lines": 169,
+      "source": 156,
+      "comments": 0,
+      "empty": 13
+    },
+    {
+      "file": "components/footer/footer.tsx",
+      "lines": 159,
+      "source": 155,
+      "comments": 7,
+      "empty": 4
+    },
+    {
+      "file": "components/entity-display.tsx",
+      "lines": 162,
+      "source": 153,
+      "comments": 5,
+      "empty": 9
+    },
+    {
+      "file": "app/info/about/page.tsx",
+      "lines": 160,
+      "source": 149,
+      "comments": 5,
+      "empty": 11
+    },
+    {
+      "file": "components/ai-overview.tsx",
+      "lines": 165,
+      "source": 148,
+      "comments": 0,
+      "empty": 17
+    },
+    {
+      "file": "components/forms/account.tsx",
+      "lines": 152,
+      "source": 146,
+      "comments": 0,
+      "empty": 6
+    },
+    {
+      "file": "app/admin/page.tsx",
+      "lines": 155,
+      "source": 143,
+      "comments": 2,
+      "empty": 12
+    },
+    {
+      "file": "components/ui/form.tsx",
+      "lines": 167,
+      "source": 143,
+      "comments": 0,
+      "empty": 24
+    },
+    {
+      "file": "components/forms/signin-form.tsx",
+      "lines": 150,
+      "source": 138,
+      "comments": 0,
+      "empty": 12
+    },
+    {
+      "file": "components/forms/reset-form.tsx",
+      "lines": 141,
+      "source": 135,
+      "comments": 0,
+      "empty": 6
+    },
+    {
+      "file": "app/search/page.tsx",
+      "lines": 146,
+      "source": 134,
+      "comments": 2,
+      "empty": 12
+    },
+    {
+      "file": "components/ui/dialog.tsx",
+      "lines": 143,
+      "source": 130,
+      "comments": 0,
+      "empty": 13
+    },
+    {
+      "file": "contexts/location-context.tsx",
+      "lines": 153,
+      "source": 129,
+      "comments": 0,
+      "empty": 24
+    },
+    {
+      "file": "components/resources/resource-list-with-filters.tsx",
+      "lines": 139,
+      "source": 127,
+      "comments": 3,
+      "empty": 12
+    },
+    {
+      "file": "components/map.tsx",
+      "lines": 141,
+      "source": 122,
+      "comments": 2,
+      "empty": 17
+    },
+    {
+      "file": "components/forms/profile.tsx",
+      "lines": 121,
+      "source": 115,
+      "comments": 0,
+      "empty": 6
+    },
+    {
+      "file": "app/page.tsx",
+      "lines": 113,
+      "source": 106,
+      "comments": 3,
+      "empty": 7
+    },
+    {
+      "file": "components/forms/forgot-form.tsx",
+      "lines": 111,
+      "source": 106,
+      "comments": 0,
+      "empty": 5
+    },
+    {
+      "file": "app/api/review/route.ts",
+      "lines": 105,
+      "source": 98,
+      "comments": 0,
+      "empty": 7
+    },
+    {
+      "file": "components/admin/admin-info.tsx",
+      "lines": 100,
+      "source": 97,
+      "comments": 0,
+      "empty": 3
+    },
+    {
+      "file": "components/search/search.tsx",
+      "lines": 107,
+      "source": 94,
+      "comments": 5,
+      "empty": 10
+    },
+    {
+      "file": "app/api/entity/route.ts",
+      "lines": 107,
+      "source": 91,
+      "comments": 7,
+      "empty": 10
+    },
+    {
+      "file": "lib/auth.ts",
+      "lines": 91,
+      "source": 88,
+      "comments": 3,
+      "empty": 3
+    },
+    {
+      "file": "app/api/search/route.ts",
+      "lines": 97,
+      "source": 86,
+      "comments": 3,
+      "empty": 9
+    },
+    {
+      "file": "components/ui/card.tsx",
+      "lines": 94,
+      "source": 85,
+      "comments": 0,
+      "empty": 9
+    },
+    {
+      "file": "app/help/feedback/page.tsx",
+      "lines": 323,
+      "source": 84,
+      "comments": 233,
+      "empty": 16
+    },
+    {
+      "file": "lib/auth-client.ts",
+      "lines": 94,
+      "source": 82,
+      "comments": 8,
+      "empty": 9
+    },
+    {
+      "file": "components/reviews/review-display.tsx",
+      "lines": 89,
+      "source": 80,
+      "comments": 3,
+      "empty": 6
+    },
+    {
+      "file": "components/search/search-display.tsx",
+      "lines": 91,
+      "source": 79,
+      "comments": 4,
+      "empty": 10
+    },
+    {
+      "file": "app/legal/disclaimers/page.tsx",
+      "lines": 84,
+      "source": 78,
+      "comments": 0,
+      "empty": 6
+    },
+    {
+      "file": "lib/s3/functions.ts",
+      "lines": 84,
+      "source": 75,
+      "comments": 0,
+      "empty": 9
+    },
+    {
+      "file": "app/api/profile/favorites/route.ts",
+      "lines": 82,
+      "source": 74,
+      "comments": 0,
+      "empty": 8
+    },
+    {
+      "file": "app/api/entity/groq/overview/route.ts",
+      "lines": 77,
+      "source": 73,
+      "comments": 1,
+      "empty": 3
+    },
+    {
+      "file": "components/reviews/indicator-display.tsx",
+      "lines": 77,
+      "source": 72,
+      "comments": 0,
+      "empty": 5
+    },
+    {
+      "file": "app/sitemap.xml/route.ts",
+      "lines": 69,
+      "source": 62,
+      "comments": 0,
+      "empty": 7
+    },
+    {
+      "file": "components/theme/mode-toggle.tsx",
+      "lines": 67,
+      "source": 62,
+      "comments": 0,
+      "empty": 5
+    },
+    {
+      "file": "lib/types.ts",
+      "lines": 68,
+      "source": 61,
+      "comments": 0,
+      "empty": 7
+    },
+    {
+      "file": "components/ui/accordion.tsx",
+      "lines": 66,
+      "source": 59,
+      "comments": 0,
+      "empty": 7
+    },
+    {
+      "file": "components/ui/tabs.tsx",
+      "lines": 66,
+      "source": 59,
+      "comments": 0,
+      "empty": 7
+    },
+    {
+      "file": "lib/db/auth-schema.ts",
+      "lines": 62,
+      "source": 58,
+      "comments": 4,
+      "empty": 4
+    },
+    {
+      "file": "components/favorite/favorite-button.tsx",
+      "lines": 61,
+      "source": 57,
+      "comments": 0,
+      "empty": 4
+    },
+    {
+      "file": "app/settings/page.tsx",
+      "lines": 63,
+      "source": 56,
+      "comments": 1,
+      "empty": 7
+    },
+    {
+      "file": "components/skeletons/search-skeleton.tsx",
+      "lines": 59,
+      "source": 56,
+      "comments": 2,
+      "empty": 3
+    },
+    {
+      "file": "components/header/header-user.tsx",
+      "lines": 57,
+      "source": 55,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "components/ui/button.tsx",
+      "lines": 59,
+      "source": 54,
+      "comments": 0,
+      "empty": 5
+    },
+    {
+      "file": "app/api/indicator/route.ts",
+      "lines": 58,
+      "source": 52,
+      "comments": 1,
+      "empty": 5
+    },
+    {
+      "file": "app/layout.tsx",
+      "lines": 55,
+      "source": 52,
+      "comments": 2,
+      "empty": 3
+    },
+    {
+      "file": "app/profile/[id]/layout.tsx",
+      "lines": 57,
+      "source": 51,
+      "comments": 0,
+      "empty": 6
+    },
+    {
+      "file": "components/search/location.tsx",
+      "lines": 59,
+      "source": 50,
+      "comments": 0,
+      "empty": 9
+    },
+    {
+      "file": "components/ui/avatar.tsx",
+      "lines": 55,
+      "source": 49,
+      "comments": 0,
+      "empty": 6
+    },
+    {
+      "file": "app/entity/[googleId]/layout.tsx",
+      "lines": 58,
+      "source": 48,
+      "comments": 3,
+      "empty": 7
+    },
+    {
+      "file": "components/landing/count-up-number.tsx",
+      "lines": 63,
+      "source": 48,
+      "comments": 1,
+      "empty": 14
+    },
+    {
+      "file": "components/forms/google-signin-button.tsx",
+      "lines": 42,
+      "source": 41,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "components/resources/resource-card.tsx",
+      "lines": 44,
+      "source": 41,
+      "comments": 0,
+      "empty": 3
+    },
+    {
+      "file": "components/ui/badge.tsx",
+      "lines": 46,
+      "source": 41,
+      "comments": 0,
+      "empty": 5
+    },
+    {
+      "file": "components/ui/popover.tsx",
+      "lines": 48,
+      "source": 41,
+      "comments": 0,
+      "empty": 7
+    },
+    {
+      "file": "components/ui/radio-group.tsx",
+      "lines": 45,
+      "source": 40,
+      "comments": 0,
+      "empty": 5
+    },
+    {
+      "file": "components/header/header.tsx",
+      "lines": 38,
+      "source": 37,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "components/reviews/profile-reviews.tsx",
+      "lines": 38,
+      "source": 37,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "components/card/error-card.tsx",
+      "lines": 38,
+      "source": 35,
+      "comments": 0,
+      "empty": 3
+    },
+    {
+      "file": "app/info/donate/page.tsx",
+      "lines": 37,
+      "source": 34,
+      "comments": 5,
+      "empty": 1
+    },
+    {
+      "file": "components/admin/admin-section.tsx",
+      "lines": 36,
+      "source": 34,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "components/admin/data-table.tsx",
+      "lines": 35,
+      "source": 33,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/api/entity/[id]/route.ts",
+      "lines": 35,
+      "source": 32,
+      "comments": 0,
+      "empty": 3
+    },
+    {
+      "file": "components/job-card.tsx",
+      "lines": 34,
+      "source": 32,
+      "comments": 1,
+      "empty": 2
+    },
+    {
+      "file": "components/loading.tsx",
+      "lines": 30,
+      "source": 30,
+      "comments": 1,
+      "empty": 0
+    },
+    {
+      "file": "app/api/profile/route.ts",
+      "lines": 31,
+      "source": 29,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "components/landing/feature-card.tsx",
+      "lines": 31,
+      "source": 29,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "lib/user-info.ts",
+      "lines": 32,
+      "source": 29,
+      "comments": 1,
+      "empty": 2
+    },
+    {
+      "file": "app/api/emails/route.ts",
+      "lines": 30,
+      "source": 28,
+      "comments": 1,
+      "empty": 2
+    },
+    {
+      "file": "components/ui/checkbox.tsx",
+      "lines": 32,
+      "source": 28,
+      "comments": 0,
+      "empty": 4
+    },
+    {
+      "file": "components/favorite/favorite-display.tsx",
+      "lines": 29,
+      "source": 27,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/help/faq/page.tsx",
+      "lines": 27,
+      "source": 26,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "app/legal/privacy/layout.tsx",
+      "lines": 28,
+      "source": 26,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/profile/[id]/page.tsx",
+      "lines": 28,
+      "source": 26,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/contact/page.tsx",
+      "lines": 97,
+      "source": 25,
+      "comments": 74,
+      "empty": 2
+    },
+    {
+      "file": "app/not-found.tsx",
+      "lines": 27,
+      "source": 25,
+      "comments": 3,
+      "empty": 1
+    },
+    {
+      "file": "components/layout/layout-display.tsx",
+      "lines": 26,
+      "source": 25,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "app/help/faq/layout.tsx",
+      "lines": 26,
+      "source": 24,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/help/feedback/layout.tsx",
+      "lines": 26,
+      "source": 24,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/info/donate/layout.tsx",
+      "lines": 26,
+      "source": 24,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/legal/disclaimers/layout.tsx",
+      "lines": 26,
+      "source": 24,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/legal/terms/layout.tsx",
+      "lines": 26,
+      "source": 24,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "components/landing/stat-card.tsx",
+      "lines": 26,
+      "source": 24,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/contact/layout.tsx",
+      "lines": 25,
+      "source": 23,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/error.tsx",
+      "lines": 26,
+      "source": 23,
+      "comments": 0,
+      "empty": 3
+    },
+    {
+      "file": "app/info/volunteer/layout.tsx",
+      "lines": 25,
+      "source": 23,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/legal/accessibility/layout.tsx",
+      "lines": 25,
+      "source": 23,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/search/layout.tsx",
+      "lines": 25,
+      "source": 23,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "components/layout/providers.tsx",
+      "lines": 24,
+      "source": 22,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/help/resources/page.tsx",
+      "lines": 25,
+      "source": 21,
+      "comments": 1,
+      "empty": 3
+    },
+    {
+      "file": "components/team-member.tsx",
+      "lines": 23,
+      "source": 21,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "components/ui/sonner.tsx",
+      "lines": 25,
+      "source": 21,
+      "comments": 0,
+      "empty": 4
+    },
+    {
+      "file": "lib/sitemap/index.ts",
+      "lines": 27,
+      "source": 21,
+      "comments": 5,
+      "empty": 3
+    },
+    {
+      "file": "components/footer/footer-link.tsx",
+      "lines": 21,
+      "source": 20,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "components/ui/label.tsx",
+      "lines": 24,
+      "source": 20,
+      "comments": 0,
+      "empty": 4
+    },
+    {
+      "file": "app/admin/layout.tsx",
+      "lines": 21,
+      "source": 19,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/api/review/images/route.ts",
+      "lines": 22,
+      "source": 19,
+      "comments": 0,
+      "empty": 3
+    },
+    {
+      "file": "components/sponsor.tsx",
+      "lines": 21,
+      "source": 19,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "components/ui/input.tsx",
+      "lines": 22,
+      "source": 19,
+      "comments": 0,
+      "empty": 3
+    },
+    {
+      "file": "app/help/resources/layout.tsx",
+      "lines": 19,
+      "source": 17,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/robots.ts",
+      "lines": 18,
+      "source": 17,
+      "comments": 1,
+      "empty": 1
+    },
+    {
+      "file": "app/sign-up/layout.tsx",
+      "lines": 19,
+      "source": 17,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/info/about/layout.tsx",
+      "lines": 18,
+      "source": 16,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/settings/layout.tsx",
+      "lines": 18,
+      "source": 16,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/sign-in/layout.tsx",
+      "lines": 18,
+      "source": 16,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/sign-in/password/forgot/layout.tsx",
+      "lines": 18,
+      "source": 16,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/sign-in/password/reset/layout.tsx",
+      "lines": 18,
+      "source": 16,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/sign-out/layout.tsx",
+      "lines": 18,
+      "source": 16,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/sign-out/page.tsx",
+      "lines": 20,
+      "source": 16,
+      "comments": 2,
+      "empty": 2
+    },
+    {
+      "file": "components/about/about-image.tsx",
+      "lines": 17,
+      "source": 16,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "components/skeletons/map-skeleton.tsx",
+      "lines": 17,
+      "source": 16,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "components/ui/textarea.tsx",
+      "lines": 19,
+      "source": 16,
+      "comments": 0,
+      "empty": 3
+    },
+    {
+      "file": "app/api/user/route.ts",
+      "lines": 16,
+      "source": 15,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "lib/s3/push.ts",
+      "lines": 17,
+      "source": 15,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "app/legal/accessibility/page.tsx",
+      "lines": 14,
+      "source": 14,
+      "comments": 0,
+      "empty": 0
+    },
+    {
+      "file": "components/layout/big-heading.tsx",
+      "lines": 14,
+      "source": 14,
+      "comments": 0,
+      "empty": 0
+    },
+    {
+      "file": "lib/session.ts",
+      "lines": 17,
+      "source": 14,
+      "comments": 0,
+      "empty": 3
+    },
+    {
+      "file": "app/info/volunteer/page.tsx",
+      "lines": 14,
+      "source": 13,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "components/forms/form-container.tsx",
+      "lines": 13,
+      "source": 13,
+      "comments": 0,
+      "empty": 0
+    },
+    {
+      "file": "proxy.ts",
+      "lines": 16,
+      "source": 12,
+      "comments": 0,
+      "empty": 4
+    },
+    {
+      "file": "components/ui/skeleton.tsx",
+      "lines": 13,
+      "source": 11,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "lib/s3/index.ts",
+      "lines": 12,
+      "source": 11,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "components/about/about-container.tsx",
+      "lines": 11,
+      "source": 10,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "components/forms/legal-agreement.tsx",
+      "lines": 10,
+      "source": 10,
+      "comments": 0,
+      "empty": 0
+    },
+    {
+      "file": "app/beta.robots.ts",
+      "lines": 10,
+      "source": 9,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "app/entity/[googleId]/page.tsx",
+      "lines": 10,
+      "source": 9,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "components/forms/form-divider.tsx",
+      "lines": 9,
+      "source": 9,
+      "comments": 0,
+      "empty": 0
+    },
+    {
+      "file": "components/theme/theme-provider.tsx",
+      "lines": 11,
+      "source": 9,
+      "comments": 0,
+      "empty": 2
+    },
+    {
+      "file": "lib/db/index.ts",
+      "lines": 10,
+      "source": 8,
+      "comments": 1,
+      "empty": 1
+    },
+    {
+      "file": "components/layout/title.tsx",
+      "lines": 7,
+      "source": 7,
+      "comments": 0,
+      "empty": 0
+    },
+    {
+      "file": "lib/sign-out.ts",
+      "lines": 8,
+      "source": 7,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "components/admin/index.ts",
+      "lines": 5,
+      "source": 5,
+      "comments": 0,
+      "empty": 0
+    },
+    {
+      "file": "lib/utils.ts",
+      "lines": 6,
+      "source": 5,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "app/sign-in/page.tsx",
+      "lines": 5,
+      "source": 4,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "app/sign-in/password/forgot/page.tsx",
+      "lines": 5,
+      "source": 4,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "app/sign-in/password/reset/page.tsx",
+      "lines": 5,
+      "source": 4,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "app/sign-up/page.tsx",
+      "lines": 5,
+      "source": 4,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "app/api/auth/[...all]/route.ts",
+      "lines": 4,
+      "source": 3,
+      "comments": 0,
+      "empty": 1
+    },
+    {
+      "file": "components/spacer.tsx",
+      "lines": 3,
+      "source": 3,
+      "comments": 0,
+      "empty": 0
+    },
+    {
+      "file": "components/splitter.tsx",
+      "lines": 3,
+      "source": 3,
+      "comments": 0,
+      "empty": 0
+    }
+  ],
+  "complexityByFile": []
+}

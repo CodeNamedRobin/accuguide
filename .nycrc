@@ -1,0 +1,16 @@
+{
+  "report-dir": "coverage",
+  "reporter": ["text", "text-summary", "html", "lcov"],
+  "exclude": [
+    "**/*.config.*",
+    "**/*.spec.*",
+    "**/*.cy.*",
+    "cypress/**/*.*",
+    ".next/**/*.*",
+    "node_modules/**/*.*",
+    "public/**/*.*"
+  ],
+  "check-coverage": false,
+  "all": true,
+  "include": ["src/**/*.{js,jsx,ts,tsx}"]
+}

@@ -1,0 +1,4044 @@
+{
+  "src/app/admin/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/admin/page.tsx": {
+    "imports": [
+      "src/components/admin/admin-info",
+      "src/lib/db",
+      "src/lib/db/schema",
+      "src/lib/session"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/admin/admin-info",
+        "resolved": "src/components/admin/admin-info",
+        "specifiers": [
+          "AdminInfo"
+        ]
+      },
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "categoryTable",
+          "FaqTable",
+          "indicatorTable",
+          "jobTable",
+          "resourceTable",
+          "typeIndicatorTable",
+          "typeMappingTable",
+          "typeTable"
+        ]
+      },
+      {
+        "source": "@/lib/session",
+        "resolved": "src/lib/session",
+        "specifiers": [
+          "getServerUser"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next/cache"
+    ],
+    "importCount": 4,
+    "externalCount": 1
+  },
+  "src/app/api/auth/[...all]/route.ts": {
+    "imports": [
+      "src/lib/auth"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/auth",
+        "resolved": "src/lib/auth",
+        "specifiers": [
+          "auth"
+        ]
+      }
+    ],
+    "externalImports": [
+      "better-auth/next-js"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/api/emails/route.ts": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "next/server"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/app/api/entity/[id]/route.ts": {
+    "imports": [
+      "src/lib/db",
+      "src/lib/db/schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "entityTable"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm",
+      "next/server"
+    ],
+    "importCount": 2,
+    "externalCount": 2
+  },
+  "src/app/api/entity/groq/overview/route.ts": {
+    "imports": [
+      "src/lib/db",
+      "src/lib/db/schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "entityTable"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm",
+      "groq-sdk",
+      "next/server"
+    ],
+    "importCount": 2,
+    "externalCount": 3
+  },
+  "src/app/api/entity/route.ts": {
+    "imports": [
+      "src/lib/db",
+      "src/lib/db/schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "Entity",
+          "entityTable",
+          "typeMappingTable"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm",
+      "next/server",
+      "uuid"
+    ],
+    "importCount": 2,
+    "externalCount": 3
+  },
+  "src/app/api/indicator/route.ts": {
+    "imports": [
+      "src/lib/db",
+      "src/lib/db/schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "indicatorTable",
+          "typeIndicatorTable",
+          "typeTable"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm",
+      "next/server"
+    ],
+    "importCount": 2,
+    "externalCount": 2
+  },
+  "src/app/api/profile/favorites/route.ts": {
+    "imports": [
+      "src/lib/db",
+      "src/lib/db/schema",
+      "src/lib/session"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "entityUserTable"
+        ]
+      },
+      {
+        "source": "@/lib/session",
+        "resolved": "src/lib/session",
+        "specifiers": [
+          "getServerUser"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm",
+      "next/server"
+    ],
+    "importCount": 3,
+    "externalCount": 2
+  },
+  "src/app/api/profile/route.ts": {
+    "imports": [
+      "src/lib/auth",
+      "src/lib/s3/functions"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/auth",
+        "resolved": "src/lib/auth",
+        "specifiers": [
+          "auth"
+        ]
+      },
+      {
+        "source": "@/lib/s3/functions",
+        "resolved": "src/lib/s3/functions",
+        "specifiers": [
+          "uploadProfilePicture"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next/server"
+    ],
+    "importCount": 2,
+    "externalCount": 1
+  },
+  "src/app/api/review/images/route.ts": {
+    "imports": [
+      "src/lib/db",
+      "src/lib/db/schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "reviewImagesTable"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm",
+      "next/server"
+    ],
+    "importCount": 2,
+    "externalCount": 2
+  },
+  "src/app/api/review/route.ts": {
+    "imports": [
+      "src/lib/db",
+      "src/lib/db/schema",
+      "src/lib/s3/functions",
+      "src/lib/session"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "ReviewIndicator",
+          "reviewImagesTable",
+          "reviewIndicatorTable",
+          "reviewTable"
+        ]
+      },
+      {
+        "source": "@/lib/s3/functions",
+        "resolved": "src/lib/s3/functions",
+        "specifiers": [
+          "uploadReviewImages"
+        ]
+      },
+      {
+        "source": "@/lib/session",
+        "resolved": "src/lib/session",
+        "specifiers": [
+          "getServerUser"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm",
+      "next/server"
+    ],
+    "importCount": 4,
+    "externalCount": 2
+  },
+  "src/app/api/search/route.ts": {
+    "imports": [
+      "src/lib/db",
+      "src/lib/db/schema",
+      "src/lib/types"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "entityTable"
+        ]
+      },
+      {
+        "source": "@/lib/types",
+        "resolved": "src/lib/types",
+        "specifiers": [
+          "GoogleSearchResponse",
+          "SearchDisplayType"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm",
+      "next/server"
+    ],
+    "importCount": 3,
+    "externalCount": 2
+  },
+  "src/app/api/user/route.ts": {
+    "imports": [
+      "src/lib/session"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/session",
+        "resolved": "src/lib/session",
+        "specifiers": [
+          "getServerUser"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next/server"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/beta.robots.ts": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/app/contact/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/contact/page.tsx": {
+    "imports": [
+      "src/components/ui/button",
+      "src/components/ui/input",
+      "src/components/ui/textarea"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/input",
+        "resolved": "src/components/ui/input",
+        "specifiers": [
+          "Input"
+        ]
+      },
+      {
+        "source": "@/components/ui/textarea",
+        "resolved": "src/components/ui/textarea",
+        "specifiers": [
+          "Textarea"
+        ]
+      }
+    ],
+    "externalImports": [
+      "lucide-react"
+    ],
+    "importCount": 3,
+    "externalCount": 1
+  },
+  "src/app/entity/[googleId]/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/entity/[googleId]/page.tsx": {
+    "imports": [
+      "src/components/entity-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/entity-display",
+        "resolved": "src/components/entity-display",
+        "specifiers": [
+          "EntityDisplay"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 1,
+    "externalCount": 0
+  },
+  "src/app/error.tsx": {
+    "imports": [
+      "src/components/card/error-card",
+      "src/components/layout/title"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/card/error-card",
+        "resolved": "src/components/card/error-card",
+        "specifiers": [
+          "ErrorCard"
+        ]
+      },
+      {
+        "source": "@/components/layout/title",
+        "resolved": "src/components/layout/title",
+        "specifiers": [
+          "Title"
+        ]
+      }
+    ],
+    "externalImports": [
+      "react"
+    ],
+    "importCount": 2,
+    "externalCount": 1
+  },
+  "src/app/help/faq/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/help/faq/page.tsx": {
+    "imports": [
+      "src/lib/db",
+      "src/lib/db/schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "FaqTable"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 2,
+    "externalCount": 0
+  },
+  "src/app/help/feedback/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/help/feedback/page.tsx": {
+    "imports": [
+      "src/components/ui/button",
+      "src/components/ui/form",
+      "src/components/ui/input",
+      "src/components/ui/label",
+      "src/components/ui/radio-group",
+      "src/components/ui/textarea"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/form",
+        "resolved": "src/components/ui/form",
+        "specifiers": [
+          "Form",
+          "FormControl",
+          "FormField",
+          "FormItem",
+          "FormLabel",
+          "FormMessage"
+        ]
+      },
+      {
+        "source": "@/components/ui/input",
+        "resolved": "src/components/ui/input",
+        "specifiers": [
+          "Input"
+        ]
+      },
+      {
+        "source": "@/components/ui/label",
+        "resolved": "src/components/ui/label",
+        "specifiers": [
+          "Label"
+        ]
+      },
+      {
+        "source": "@/components/ui/radio-group",
+        "resolved": "src/components/ui/radio-group",
+        "specifiers": [
+          "RadioGroup",
+          "RadioGroupItem"
+        ]
+      },
+      {
+        "source": "@/components/ui/textarea",
+        "resolved": "src/components/ui/textarea",
+        "specifiers": [
+          "Textarea"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@hookform/resolvers/zod",
+      "lucide-react",
+      "react",
+      "react-hook-form",
+      "sonner",
+      "zod"
+    ],
+    "importCount": 6,
+    "externalCount": 6
+  },
+  "src/app/help/resources/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/help/resources/page.tsx": {
+    "imports": [
+      "src/components/resources/resource-list-with-filters",
+      "src/lib/db",
+      "src/lib/db/schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/resources/resource-list-with-filters",
+        "resolved": "src/components/resources/resource-list-with-filters",
+        "specifiers": [
+          "ResourceListWithFilters"
+        ]
+      },
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "resourceTable"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 3,
+    "externalCount": 0
+  },
+  "src/app/info/about/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/info/about/page.tsx": {
+    "imports": [
+      "src/components/about/about-container",
+      "src/components/about/about-image",
+      "src/components/layout/big-heading",
+      "src/components/spacer",
+      "src/components/sponsor",
+      "src/components/team-member"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/about/about-container",
+        "resolved": "src/components/about/about-container",
+        "specifiers": [
+          "AboutContainer"
+        ]
+      },
+      {
+        "source": "@/components/about/about-image",
+        "resolved": "src/components/about/about-image",
+        "specifiers": [
+          "AboutImage"
+        ]
+      },
+      {
+        "source": "@/components/layout/big-heading",
+        "resolved": "src/components/layout/big-heading",
+        "specifiers": [
+          "BigHeading"
+        ]
+      },
+      {
+        "source": "@/components/spacer",
+        "resolved": "src/components/spacer",
+        "specifiers": [
+          "Spacer"
+        ]
+      },
+      {
+        "source": "@/components/sponsor",
+        "resolved": "src/components/sponsor",
+        "specifiers": [
+          "Sponsor"
+        ]
+      },
+      {
+        "source": "@/components/team-member",
+        "resolved": "src/components/team-member",
+        "specifiers": [
+          "TeamMember"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 6,
+    "externalCount": 0
+  },
+  "src/app/info/donate/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/info/donate/page.tsx": {
+    "imports": [
+      "src/components/ui/card"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/card",
+        "resolved": "src/components/ui/card",
+        "specifiers": [
+          "Card"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 1,
+    "externalCount": 0
+  },
+  "src/app/info/volunteer/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/info/volunteer/page.tsx": {
+    "imports": [
+      "src/components/job-card",
+      "src/lib/db",
+      "src/lib/db/schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/job-card",
+        "resolved": "src/components/job-card",
+        "specifiers": [
+          "JobCard"
+        ]
+      },
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "jobTable"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 3,
+    "externalCount": 0
+  },
+  "src/app/layout.tsx": {
+    "imports": [
+      "src/app/globals.css",
+      "src/components/footer/footer",
+      "src/components/header/header",
+      "src/components/layout/providers",
+      "src/components/splitter",
+      "src/components/theme/mode-toggle"
+    ],
+    "importDetails": [
+      {
+        "source": "@/app/globals.css",
+        "resolved": "src/app/globals.css",
+        "specifiers": []
+      },
+      {
+        "source": "@/components/footer/footer",
+        "resolved": "src/components/footer/footer",
+        "specifiers": [
+          "Footer"
+        ]
+      },
+      {
+        "source": "@/components/header/header",
+        "resolved": "src/components/header/header",
+        "specifiers": [
+          "Header"
+        ]
+      },
+      {
+        "source": "@/components/layout/providers",
+        "resolved": "src/components/layout/providers",
+        "specifiers": [
+          "Providers"
+        ]
+      },
+      {
+        "source": "@/components/splitter",
+        "resolved": "src/components/splitter",
+        "specifiers": [
+          "Splitter"
+        ]
+      },
+      {
+        "source": "@/components/theme/mode-toggle",
+        "resolved": "src/components/theme/mode-toggle",
+        "specifiers": [
+          "ModeToggle"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next",
+      "next/font/google",
+      "next/script"
+    ],
+    "importCount": 6,
+    "externalCount": 3
+  },
+  "src/app/legal/accessibility/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/legal/accessibility/page.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [],
+    "importCount": 0,
+    "externalCount": 0
+  },
+  "src/app/legal/disclaimers/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/legal/disclaimers/page.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "lucide-react"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/app/legal/privacy/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/legal/privacy/page.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "lucide-react"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/app/legal/terms/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/legal/terms/page.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "lucide-react"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/app/not-found.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "next/link"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/app/page.tsx": {
+    "imports": [
+      "src/components/landing/feature-card",
+      "src/components/landing/stat-card",
+      "src/lib/db",
+      "src/lib/db/schema",
+      "src/components/search/search"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/landing/feature-card",
+        "resolved": "src/components/landing/feature-card",
+        "specifiers": [
+          "FeatureCard"
+        ]
+      },
+      {
+        "source": "@/components/landing/stat-card",
+        "resolved": "src/components/landing/stat-card",
+        "specifiers": [
+          "StatCard"
+        ]
+      },
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "entityTable",
+          "indicatorTable",
+          "reviewTable"
+        ]
+      },
+      {
+        "source": "@/components/search/search",
+        "resolved": "src/components/search/search",
+        "dynamic": true,
+        "specifiers": []
+      }
+    ],
+    "externalImports": [
+      "lucide-react",
+      "next/dynamic",
+      "sonner"
+    ],
+    "importCount": 5,
+    "externalCount": 3
+  },
+  "src/app/profile/[id]/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display",
+      "src/lib/db",
+      "src/lib/db/auth-schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      },
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/auth-schema",
+        "resolved": "src/lib/db/auth-schema",
+        "specifiers": [
+          "user"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm",
+      "next"
+    ],
+    "importCount": 3,
+    "externalCount": 2
+  },
+  "src/app/profile/[id]/page.tsx": {
+    "imports": [
+      "src/components/reviews/review-display",
+      "src/lib/db",
+      "src/lib/db/schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/reviews/review-display",
+        "resolved": "src/components/reviews/review-display",
+        "specifiers": [
+          "ReviewDisplay"
+        ]
+      },
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "reviewTable"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm"
+    ],
+    "importCount": 3,
+    "externalCount": 1
+  },
+  "src/app/robots.ts": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/app/search/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/search/page.tsx": {
+    "imports": [
+      "src/components/map",
+      "src/components/search/location",
+      "src/components/search/search-display",
+      "src/components/skeletons/search-skeleton",
+      "src/contexts/location-context",
+      "src/lib/types"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/map",
+        "resolved": "src/components/map",
+        "specifiers": [
+          "MapComponent"
+        ]
+      },
+      {
+        "source": "@/components/search/location",
+        "resolved": "src/components/search/location",
+        "specifiers": [
+          "Location"
+        ]
+      },
+      {
+        "source": "@/components/search/search-display",
+        "resolved": "src/components/search/search-display",
+        "specifiers": [
+          "SearchDisplay"
+        ]
+      },
+      {
+        "source": "@/components/skeletons/search-skeleton",
+        "resolved": "src/components/skeletons/search-skeleton",
+        "specifiers": [
+          "SearchSkeleton"
+        ]
+      },
+      {
+        "source": "@/contexts/location-context",
+        "resolved": "src/contexts/location-context",
+        "specifiers": [
+          "useLocation"
+        ]
+      },
+      {
+        "source": "@/lib/types",
+        "resolved": "src/lib/types",
+        "specifiers": [
+          "PointOfInterest",
+          "SearchDisplayProps"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next/navigation",
+      "react"
+    ],
+    "importCount": 6,
+    "externalCount": 2
+  },
+  "src/app/settings/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/settings/page.tsx": {
+    "imports": [
+      "src/components/favorite/favorite-display",
+      "src/components/reviews/review-display",
+      "src/components/settings/settings",
+      "src/lib/db",
+      "src/lib/db/schema",
+      "src/lib/session"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/favorite/favorite-display",
+        "resolved": "src/components/favorite/favorite-display",
+        "specifiers": [
+          "FavoriteDisplay"
+        ]
+      },
+      {
+        "source": "@/components/reviews/review-display",
+        "resolved": "src/components/reviews/review-display",
+        "specifiers": [
+          "ReviewDisplay"
+        ]
+      },
+      {
+        "source": "@/components/settings/settings",
+        "resolved": "src/components/settings/settings",
+        "specifiers": [
+          "Settings"
+        ]
+      },
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "entityUserTable",
+          "reviewTable"
+        ]
+      },
+      {
+        "source": "@/lib/session",
+        "resolved": "src/lib/session",
+        "specifiers": [
+          "getServerUser"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm"
+    ],
+    "importCount": 6,
+    "externalCount": 1
+  },
+  "src/app/sign-in/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/sign-in/page.tsx": {
+    "imports": [
+      "src/components/forms/signin-form"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/forms/signin-form",
+        "resolved": "src/components/forms/signin-form",
+        "specifiers": [
+          "SigninForm"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 1,
+    "externalCount": 0
+  },
+  "src/app/sign-in/password/forgot/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/sign-in/password/forgot/page.tsx": {
+    "imports": [
+      "src/components/forms/forgot-form"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/forms/forgot-form",
+        "resolved": "src/components/forms/forgot-form",
+        "specifiers": [
+          "ForgotForm"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 1,
+    "externalCount": 0
+  },
+  "src/app/sign-in/password/reset/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/sign-in/password/reset/page.tsx": {
+    "imports": [
+      "src/components/forms/reset-form"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/forms/reset-form",
+        "resolved": "src/components/forms/reset-form",
+        "specifiers": [
+          "ResetForm"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 1,
+    "externalCount": 0
+  },
+  "src/app/sign-out/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/sign-out/page.tsx": {
+    "imports": [
+      "src/lib/auth-client"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/auth-client",
+        "resolved": "src/lib/auth-client",
+        "specifiers": [
+          "authClient"
+        ]
+      }
+    ],
+    "externalImports": [
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/sign-up/layout.tsx": {
+    "imports": [
+      "src/components/layout/layout-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/layout/layout-display",
+        "resolved": "src/components/layout/layout-display",
+        "specifiers": [
+          "LayoutDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/app/sign-up/page.tsx": {
+    "imports": [
+      "src/components/forms/signup-form"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/forms/signup-form",
+        "resolved": "src/components/forms/signup-form",
+        "specifiers": [
+          "SignupForm"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 1,
+    "externalCount": 0
+  },
+  "src/app/sitemap.xml/route.ts": {
+    "imports": [
+      "src/lib/db",
+      "src/lib/db/auth-schema",
+      "src/lib/db/schema",
+      "src/lib/sitemap"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/auth-schema",
+        "resolved": "src/lib/db/auth-schema",
+        "specifiers": [
+          "user"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "entityTable"
+        ]
+      },
+      {
+        "source": "@/lib/sitemap",
+        "resolved": "src/lib/sitemap",
+        "specifiers": [
+          "createSitemapUrlSet"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 4,
+    "externalCount": 0
+  },
+  "src/components/about/about-container.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [],
+    "importCount": 0,
+    "externalCount": 0
+  },
+  "src/components/about/about-image.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [],
+    "importCount": 0,
+    "externalCount": 0
+  },
+  "src/components/admin/admin-info.tsx": {
+    "imports": [
+      "src/components/ui/tabs",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/admin/information",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/admin/types-categories-indicators"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/tabs",
+        "resolved": "src/components/ui/tabs",
+        "specifiers": [
+          "Tabs",
+          "TabsContent",
+          "TabsList",
+          "TabsTrigger"
+        ]
+      },
+      {
+        "source": "./information",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/admin/information",
+        "specifiers": [
+          "Information"
+        ]
+      },
+      {
+        "source": "./types-categories-indicators",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/admin/types-categories-indicators",
+        "specifiers": [
+          "TypesCategoriesIndicators"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 3,
+    "externalCount": 0
+  },
+  "src/components/admin/admin-section.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "react"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/components/admin/data-table.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/components/admin/index.ts": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [],
+    "importCount": 0,
+    "externalCount": 0
+  },
+  "src/components/admin/information.tsx": {
+    "imports": [
+      "src/components/ui/button",
+      "src/components/ui/dialog",
+      "src/components/ui/input",
+      "src/components/ui/label",
+      "src/components/ui/textarea",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/admin/index"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/dialog",
+        "resolved": "src/components/ui/dialog",
+        "specifiers": [
+          "Dialog",
+          "DialogContent",
+          "DialogDescription",
+          "DialogFooter",
+          "DialogHeader",
+          "DialogTitle"
+        ]
+      },
+      {
+        "source": "@/components/ui/input",
+        "resolved": "src/components/ui/input",
+        "specifiers": [
+          "Input"
+        ]
+      },
+      {
+        "source": "@/components/ui/label",
+        "resolved": "src/components/ui/label",
+        "specifiers": [
+          "Label"
+        ]
+      },
+      {
+        "source": "@/components/ui/textarea",
+        "resolved": "src/components/ui/textarea",
+        "specifiers": [
+          "Textarea"
+        ]
+      },
+      {
+        "source": "./index",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/admin/index",
+        "specifiers": [
+          "AdminSection",
+          "DataTable"
+        ]
+      }
+    ],
+    "externalImports": [
+      "react"
+    ],
+    "importCount": 6,
+    "externalCount": 1
+  },
+  "src/components/admin/types-categories-indicators.tsx": {
+    "imports": [
+      "src/components/ui/button",
+      "src/components/ui/command",
+      "src/components/ui/dialog",
+      "src/components/ui/input",
+      "src/components/ui/label",
+      "src/components/ui/popover",
+      "src/components/ui/textarea",
+      "src/lib/utils",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/admin/index"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/command",
+        "resolved": "src/components/ui/command",
+        "specifiers": [
+          "Command",
+          "CommandEmpty",
+          "CommandGroup",
+          "CommandItem",
+          "CommandList"
+        ]
+      },
+      {
+        "source": "@/components/ui/dialog",
+        "resolved": "src/components/ui/dialog",
+        "specifiers": [
+          "Dialog",
+          "DialogContent",
+          "DialogDescription",
+          "DialogFooter",
+          "DialogHeader",
+          "DialogTitle"
+        ]
+      },
+      {
+        "source": "@/components/ui/input",
+        "resolved": "src/components/ui/input",
+        "specifiers": [
+          "Input"
+        ]
+      },
+      {
+        "source": "@/components/ui/label",
+        "resolved": "src/components/ui/label",
+        "specifiers": [
+          "Label"
+        ]
+      },
+      {
+        "source": "@/components/ui/popover",
+        "resolved": "src/components/ui/popover",
+        "specifiers": [
+          "Popover",
+          "PopoverContent",
+          "PopoverTrigger"
+        ]
+      },
+      {
+        "source": "@/components/ui/textarea",
+        "resolved": "src/components/ui/textarea",
+        "specifiers": [
+          "Textarea"
+        ]
+      },
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      },
+      {
+        "source": "./index",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/admin/index",
+        "specifiers": [
+          "AdminSection",
+          "DataTable"
+        ]
+      }
+    ],
+    "externalImports": [
+      "lucide-react",
+      "react"
+    ],
+    "importCount": 9,
+    "externalCount": 2
+  },
+  "src/components/ai-overview.tsx": {
+    "imports": [
+      "src/lib/db/schema",
+      "src/lib/types",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/reviews/indicator-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "Entity"
+        ]
+      },
+      {
+        "source": "@/lib/types",
+        "resolved": "src/lib/types",
+        "specifiers": [
+          "Review"
+        ]
+      },
+      {
+        "source": "./reviews/indicator-display",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/reviews/indicator-display",
+        "specifiers": [
+          "IndicatorDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "react",
+      "sonner",
+      "uuid"
+    ],
+    "importCount": 3,
+    "externalCount": 3
+  },
+  "src/components/card/error-card.tsx": {
+    "imports": [
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ui/card"
+    ],
+    "importDetails": [
+      {
+        "source": "../ui/card",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ui/card",
+        "specifiers": [
+          "Card",
+          "CardContent",
+          "CardDescription",
+          "CardHeader",
+          "CardTitle"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next/link",
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 2
+  },
+  "src/components/entity-display.tsx": {
+    "imports": [
+      "src/components/reviews/review-display",
+      "src/lib/db",
+      "src/lib/db/schema",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ai-overview",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/favorite/favorite-button",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ui/button"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/reviews/review-display",
+        "resolved": "src/components/reviews/review-display",
+        "specifiers": [
+          "ReviewDisplay"
+        ]
+      },
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "Entity",
+          "reviewImagesTable",
+          "reviewIndicatorTable",
+          "reviewTable"
+        ]
+      },
+      {
+        "source": "./ai-overview",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ai-overview",
+        "specifiers": [
+          "AIOverview"
+        ]
+      },
+      {
+        "source": "./favorite/favorite-button",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/favorite/favorite-button",
+        "specifiers": [
+          "FavoriteButton"
+        ]
+      },
+      {
+        "source": "./ui/button",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm",
+      "next/link"
+    ],
+    "importCount": 6,
+    "externalCount": 2
+  },
+  "src/components/favorite/favorite-button.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "clsx",
+      "lucide-react",
+      "react",
+      "sonner"
+    ],
+    "importCount": 0,
+    "externalCount": 4
+  },
+  "src/components/favorite/favorite-display.tsx": {
+    "imports": [
+      "src/lib/db",
+      "src/lib/db/schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "entityTable"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm"
+    ],
+    "importCount": 2,
+    "externalCount": 1
+  },
+  "src/components/footer/footer-link.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "next/link"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/components/footer/footer.tsx": {
+    "imports": [
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/footer/footer-link"
+    ],
+    "importDetails": [
+      {
+        "source": "./footer-link",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/footer/footer-link",
+        "specifiers": [
+          "FooterLink"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next/image",
+      "next/link"
+    ],
+    "importCount": 1,
+    "externalCount": 2
+  },
+  "src/components/forms/account.tsx": {
+    "imports": [
+      "src/components/ui/button",
+      "src/components/ui/card",
+      "src/components/ui/form",
+      "src/components/ui/input",
+      "src/lib/auth-client",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/forms/form-container"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/card",
+        "resolved": "src/components/ui/card",
+        "specifiers": [
+          "Card",
+          "CardContent",
+          "CardDescription",
+          "CardHeader",
+          "CardTitle"
+        ]
+      },
+      {
+        "source": "@/components/ui/form",
+        "resolved": "src/components/ui/form",
+        "specifiers": [
+          "Form",
+          "FormControl",
+          "FormField",
+          "FormItem",
+          "FormLabel",
+          "FormMessage"
+        ]
+      },
+      {
+        "source": "@/components/ui/input",
+        "resolved": "src/components/ui/input",
+        "specifiers": [
+          "Input"
+        ]
+      },
+      {
+        "source": "@/lib/auth-client",
+        "resolved": "src/lib/auth-client",
+        "specifiers": [
+          "changeEmail",
+          "changePassword"
+        ]
+      },
+      {
+        "source": "./form-container",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/forms/form-container",
+        "specifiers": [
+          "FormContainer"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@hookform/resolvers/zod",
+      "react",
+      "react-hook-form",
+      "zod"
+    ],
+    "importCount": 6,
+    "externalCount": 4
+  },
+  "src/components/forms/forgot-form.tsx": {
+    "imports": [
+      "src/components/forms/form-container",
+      "src/components/ui/button",
+      "src/components/ui/card",
+      "src/components/ui/form",
+      "src/components/ui/input",
+      "src/lib/auth-client"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/forms/form-container",
+        "resolved": "src/components/forms/form-container",
+        "specifiers": [
+          "FormContainer"
+        ]
+      },
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/card",
+        "resolved": "src/components/ui/card",
+        "specifiers": [
+          "Card",
+          "CardContent",
+          "CardHeader",
+          "CardTitle"
+        ]
+      },
+      {
+        "source": "@/components/ui/form",
+        "resolved": "src/components/ui/form",
+        "specifiers": [
+          "Form",
+          "FormControl",
+          "FormField",
+          "FormItem",
+          "FormLabel",
+          "FormMessage"
+        ]
+      },
+      {
+        "source": "@/components/ui/input",
+        "resolved": "src/components/ui/input",
+        "specifiers": [
+          "Input"
+        ]
+      },
+      {
+        "source": "@/lib/auth-client",
+        "resolved": "src/lib/auth-client",
+        "specifiers": [
+          "requestPassWordReset"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@hookform/resolvers/zod",
+      "next/link",
+      "react",
+      "react-hook-form",
+      "zod"
+    ],
+    "importCount": 6,
+    "externalCount": 5
+  },
+  "src/components/forms/form-container.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [],
+    "importCount": 0,
+    "externalCount": 0
+  },
+  "src/components/forms/form-divider.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [],
+    "importCount": 0,
+    "externalCount": 0
+  },
+  "src/components/forms/google-signin-button.tsx": {
+    "imports": [
+      "src/components/ui/button",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/forms/form-divider"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "./form-divider",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/forms/form-divider",
+        "specifiers": [
+          "FormDivider"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 2,
+    "externalCount": 0
+  },
+  "src/components/forms/legal-agreement.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [],
+    "importCount": 0,
+    "externalCount": 0
+  },
+  "src/components/forms/profile.tsx": {
+    "imports": [
+      "src/components/ui/button",
+      "src/components/ui/card",
+      "src/components/ui/form",
+      "src/components/ui/input",
+      "src/lib/auth-client"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/card",
+        "resolved": "src/components/ui/card",
+        "specifiers": [
+          "Card",
+          "CardContent",
+          "CardDescription",
+          "CardHeader",
+          "CardTitle"
+        ]
+      },
+      {
+        "source": "@/components/ui/form",
+        "resolved": "src/components/ui/form",
+        "specifiers": [
+          "Form",
+          "FormControl",
+          "FormField",
+          "FormItem",
+          "FormLabel",
+          "FormMessage"
+        ]
+      },
+      {
+        "source": "@/components/ui/input",
+        "resolved": "src/components/ui/input",
+        "specifiers": [
+          "Input"
+        ]
+      },
+      {
+        "source": "@/lib/auth-client",
+        "resolved": "src/lib/auth-client",
+        "specifiers": [
+          "changeName"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@hookform/resolvers/zod",
+      "react",
+      "react-hook-form",
+      "zod"
+    ],
+    "importCount": 5,
+    "externalCount": 4
+  },
+  "src/components/forms/reset-form.tsx": {
+    "imports": [
+      "src/components/forms/form-container",
+      "src/components/ui/button",
+      "src/components/ui/card",
+      "src/components/ui/form",
+      "src/components/ui/input",
+      "src/lib/auth-client"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/forms/form-container",
+        "resolved": "src/components/forms/form-container",
+        "specifiers": [
+          "FormContainer"
+        ]
+      },
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/card",
+        "resolved": "src/components/ui/card",
+        "specifiers": [
+          "Card",
+          "CardContent",
+          "CardHeader",
+          "CardTitle"
+        ]
+      },
+      {
+        "source": "@/components/ui/form",
+        "resolved": "src/components/ui/form",
+        "specifiers": [
+          "Form",
+          "FormControl",
+          "FormField",
+          "FormItem",
+          "FormLabel",
+          "FormMessage"
+        ]
+      },
+      {
+        "source": "@/components/ui/input",
+        "resolved": "src/components/ui/input",
+        "specifiers": [
+          "Input"
+        ]
+      },
+      {
+        "source": "@/lib/auth-client",
+        "resolved": "src/lib/auth-client",
+        "specifiers": [
+          "authClient"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@hookform/resolvers/zod",
+      "next/link",
+      "next/navigation",
+      "react",
+      "react-hook-form",
+      "zod"
+    ],
+    "importCount": 6,
+    "externalCount": 6
+  },
+  "src/components/forms/signin-form.tsx": {
+    "imports": [
+      "src/components/forms/legal-agreement",
+      "src/components/ui/button",
+      "src/components/ui/form",
+      "src/components/ui/input",
+      "src/lib/auth-client",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/loading",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/forms/form-container",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/forms/google-signin-button"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/forms/legal-agreement",
+        "resolved": "src/components/forms/legal-agreement",
+        "specifiers": [
+          "LegalAgreement"
+        ]
+      },
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/form",
+        "resolved": "src/components/ui/form",
+        "specifiers": [
+          "Form",
+          "FormControl",
+          "FormField",
+          "FormItem",
+          "FormLabel",
+          "FormMessage"
+        ]
+      },
+      {
+        "source": "@/components/ui/input",
+        "resolved": "src/components/ui/input",
+        "specifiers": [
+          "Input"
+        ]
+      },
+      {
+        "source": "@/lib/auth-client",
+        "resolved": "src/lib/auth-client",
+        "specifiers": [
+          "signInWithEmail",
+          "signInWithGoogle"
+        ]
+      },
+      {
+        "source": "../loading",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/loading",
+        "specifiers": [
+          "Loading"
+        ]
+      },
+      {
+        "source": "./form-container",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/forms/form-container",
+        "specifiers": [
+          "FormContainer"
+        ]
+      },
+      {
+        "source": "./google-signin-button",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/forms/google-signin-button",
+        "specifiers": [
+          "GoogleSignInButton"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@hookform/resolvers/zod",
+      "lucide-react",
+      "next/link",
+      "react",
+      "react-hook-form",
+      "sonner",
+      "zod"
+    ],
+    "importCount": 8,
+    "externalCount": 7
+  },
+  "src/components/forms/signup-form.tsx": {
+    "imports": [
+      "src/components/forms/legal-agreement",
+      "src/components/ui/button",
+      "src/components/ui/form",
+      "src/components/ui/input",
+      "src/lib/auth-client",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/loading",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/forms/form-container",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/forms/google-signin-button"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/forms/legal-agreement",
+        "resolved": "src/components/forms/legal-agreement",
+        "specifiers": [
+          "LegalAgreement"
+        ]
+      },
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/form",
+        "resolved": "src/components/ui/form",
+        "specifiers": [
+          "Form",
+          "FormControl",
+          "FormField",
+          "FormItem",
+          "FormLabel",
+          "FormMessage"
+        ]
+      },
+      {
+        "source": "@/components/ui/input",
+        "resolved": "src/components/ui/input",
+        "specifiers": [
+          "Input"
+        ]
+      },
+      {
+        "source": "@/lib/auth-client",
+        "resolved": "src/lib/auth-client",
+        "specifiers": [
+          "signInWithGoogle",
+          "signUpWithEmail"
+        ]
+      },
+      {
+        "source": "../loading",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/loading",
+        "specifiers": [
+          "Loading"
+        ]
+      },
+      {
+        "source": "./form-container",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/forms/form-container",
+        "specifiers": [
+          "FormContainer"
+        ]
+      },
+      {
+        "source": "./google-signin-button",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/forms/google-signin-button",
+        "specifiers": [
+          "GoogleSignInButton"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@hookform/resolvers/zod",
+      "lucide-react",
+      "next/link",
+      "react",
+      "react-hook-form",
+      "sonner",
+      "zod"
+    ],
+    "importCount": 8,
+    "externalCount": 7
+  },
+  "src/components/header/header-user.tsx": {
+    "imports": [
+      "src/components/ui/avatar",
+      "src/components/ui/button",
+      "src/components/ui/dropdown-menu",
+      "src/lib/s3/functions",
+      "src/lib/session"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/avatar",
+        "resolved": "src/components/ui/avatar",
+        "specifiers": [
+          "Avatar",
+          "AvatarFallback",
+          "AvatarImage"
+        ]
+      },
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/dropdown-menu",
+        "resolved": "src/components/ui/dropdown-menu",
+        "specifiers": [
+          "DropdownMenu",
+          "DropdownMenuContent",
+          "DropdownMenuItem",
+          "DropdownMenuLabel",
+          "DropdownMenuSeparator",
+          "DropdownMenuTrigger"
+        ]
+      },
+      {
+        "source": "@/lib/s3/functions",
+        "resolved": "src/lib/s3/functions",
+        "specifiers": [
+          "getProfileImage"
+        ]
+      },
+      {
+        "source": "@/lib/session",
+        "resolved": "src/lib/session",
+        "specifiers": [
+          "getServerUser"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next/link"
+    ],
+    "importCount": 5,
+    "externalCount": 1
+  },
+  "src/components/header/header.tsx": {
+    "imports": [
+      "src/components/search/search",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/header/header-user"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/search/search",
+        "resolved": "src/components/search/search",
+        "specifiers": [
+          "Search"
+        ]
+      },
+      {
+        "source": "./header-user",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/header/header-user",
+        "specifiers": [
+          "HeaderUser"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next/image",
+      "next/link"
+    ],
+    "importCount": 2,
+    "externalCount": 2
+  },
+  "src/components/job-card.tsx": {
+    "imports": [
+      "src/components/ui/card",
+      "src/lib/db/schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/card",
+        "resolved": "src/components/ui/card",
+        "specifiers": [
+          "Card",
+          "CardContent",
+          "CardTitle"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "Job"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next/link"
+    ],
+    "importCount": 2,
+    "externalCount": 1
+  },
+  "src/components/landing/count-up-number.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "react"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/components/landing/feature-card.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "lucide-react"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/components/landing/stat-card.tsx": {
+    "imports": [
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/landing/count-up-number"
+    ],
+    "importDetails": [
+      {
+        "source": "./count-up-number",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/landing/count-up-number",
+        "specifiers": [
+          "CountUpNumber"
+        ]
+      }
+    ],
+    "externalImports": [
+      "lucide-react"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/components/layout/big-heading.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [],
+    "importCount": 0,
+    "externalCount": 0
+  },
+  "src/components/layout/layout-display.tsx": {
+    "imports": [
+      "src/lib/utils",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/layout/title"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      },
+      {
+        "source": "./title",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/layout/title",
+        "specifiers": [
+          "Title"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 2,
+    "externalCount": 0
+  },
+  "src/components/layout/providers.tsx": {
+    "imports": [
+      "src/components/ui/sonner",
+      "src/contexts/location-context"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/sonner",
+        "resolved": "src/components/ui/sonner",
+        "specifiers": [
+          "Toaster"
+        ]
+      },
+      {
+        "source": "@/contexts/location-context",
+        "resolved": "src/contexts/location-context",
+        "specifiers": [
+          "LocationProvider"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@vis.gl/react-google-maps",
+      "next-themes"
+    ],
+    "importCount": 2,
+    "externalCount": 2
+  },
+  "src/components/layout/title.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [],
+    "importCount": 0,
+    "externalCount": 0
+  },
+  "src/components/loading.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [],
+    "importCount": 0,
+    "externalCount": 0
+  },
+  "src/components/map.tsx": {
+    "imports": [
+      "src/lib/types"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/types",
+        "resolved": "src/lib/types",
+        "specifiers": [
+          "PointOfInterest"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@vis.gl/react-google-maps",
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 2
+  },
+  "src/components/resources/resource-card.tsx": {
+    "imports": [
+      "src/components/ui/card"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/card",
+        "resolved": "src/components/ui/card",
+        "specifiers": [
+          "Card",
+          "CardContent",
+          "CardTitle"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next/link"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/components/resources/resource-list-with-filters.tsx": {
+    "imports": [
+      "src/components/resources/resource-card",
+      "src/components/ui/button",
+      "src/components/ui/dropdown-menu",
+      "src/lib/db/schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/resources/resource-card",
+        "resolved": "src/components/resources/resource-card",
+        "specifiers": [
+          "ResourceCard"
+        ]
+      },
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/dropdown-menu",
+        "resolved": "src/components/ui/dropdown-menu",
+        "specifiers": [
+          "DropdownMenu",
+          "DropdownMenuContent",
+          "DropdownMenuItem",
+          "DropdownMenuTrigger"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "Resource"
+        ]
+      }
+    ],
+    "externalImports": [
+      "lucide-react",
+      "react"
+    ],
+    "importCount": 4,
+    "externalCount": 2
+  },
+  "src/components/reviews/indicator-display.tsx": {
+    "imports": [
+      "src/components/ui/button",
+      "src/components/ui/card",
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/card",
+        "resolved": "src/components/ui/card",
+        "specifiers": [
+          "Card"
+        ]
+      },
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "lucide-react"
+    ],
+    "importCount": 3,
+    "externalCount": 1
+  },
+  "src/components/reviews/profile-reviews.tsx": {
+    "imports": [
+      "src/components/reviews/review-display",
+      "src/components/ui/card",
+      "src/lib/db",
+      "src/lib/db/schema",
+      "src/lib/session"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/reviews/review-display",
+        "resolved": "src/components/reviews/review-display",
+        "specifiers": [
+          "ReviewDisplay"
+        ]
+      },
+      {
+        "source": "@/components/ui/card",
+        "resolved": "src/components/ui/card",
+        "specifiers": [
+          "Card",
+          "CardContent",
+          "CardDescription",
+          "CardHeader",
+          "CardTitle"
+        ]
+      },
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "reviewTable"
+        ]
+      },
+      {
+        "source": "@/lib/session",
+        "resolved": "src/lib/session",
+        "specifiers": [
+          "getServerUser"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm"
+    ],
+    "importCount": 5,
+    "externalCount": 1
+  },
+  "src/components/reviews/review-display.tsx": {
+    "imports": [
+      "src/lib/s3/functions",
+      "src/lib/session",
+      "src/lib/types",
+      "src/lib/user-info",
+      "src/lib/utils",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/reviews/review-item",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/reviews/review-write"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/s3/functions",
+        "resolved": "src/lib/s3/functions",
+        "specifiers": [
+          "getProfileImage",
+          "getReviewImages"
+        ]
+      },
+      {
+        "source": "@/lib/session",
+        "resolved": "src/lib/session",
+        "specifiers": [
+          "checkAuth"
+        ]
+      },
+      {
+        "source": "@/lib/types",
+        "resolved": "src/lib/types",
+        "specifiers": [
+          "Image",
+          "Indicator",
+          "Review"
+        ]
+      },
+      {
+        "source": "@/lib/user-info",
+        "resolved": "src/lib/user-info",
+        "specifiers": [
+          "getUserInfosByIds"
+        ]
+      },
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      },
+      {
+        "source": "./review-item",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/reviews/review-item",
+        "specifiers": [
+          "ReviewItem"
+        ]
+      },
+      {
+        "source": "./review-write",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/reviews/review-write",
+        "specifiers": [
+          "ReviewWrite"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 7,
+    "externalCount": 0
+  },
+  "src/components/reviews/review-item.tsx": {
+    "imports": [
+      "src/components/ui/avatar",
+      "src/lib/types",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ui/button",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ui/textarea",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/reviews/indicator-display"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/avatar",
+        "resolved": "src/components/ui/avatar",
+        "specifiers": [
+          "Avatar",
+          "AvatarFallback",
+          "AvatarImage"
+        ]
+      },
+      {
+        "source": "@/lib/types",
+        "resolved": "src/lib/types",
+        "specifiers": [
+          "Indicator",
+          "Review"
+        ]
+      },
+      {
+        "source": "../ui/button",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "../ui/textarea",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ui/textarea",
+        "specifiers": [
+          "Textarea"
+        ]
+      },
+      {
+        "source": "./indicator-display",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/reviews/indicator-display",
+        "specifiers": [
+          "IndicatorDisplay"
+        ]
+      }
+    ],
+    "externalImports": [
+      "lucide-react",
+      "next/link",
+      "react"
+    ],
+    "importCount": 5,
+    "externalCount": 3
+  },
+  "src/components/reviews/review-write.tsx": {
+    "imports": [
+      "src/components/ui/accordion",
+      "src/components/ui/button",
+      "src/components/ui/card",
+      "src/components/ui/textarea",
+      "src/lib/db/schema",
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/accordion",
+        "resolved": "src/components/ui/accordion",
+        "specifiers": [
+          "Accordion",
+          "AccordionContent",
+          "AccordionItem",
+          "AccordionTrigger"
+        ]
+      },
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/card",
+        "resolved": "src/components/ui/card",
+        "specifiers": [
+          "Card"
+        ]
+      },
+      {
+        "source": "@/components/ui/textarea",
+        "resolved": "src/components/ui/textarea",
+        "specifiers": [
+          "Textarea"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "DBReviewIndicator"
+        ]
+      },
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "lucide-react",
+      "next/link",
+      "react",
+      "uuid"
+    ],
+    "importCount": 6,
+    "externalCount": 4
+  },
+  "src/components/search/location.tsx": {
+    "imports": [
+      "src/contexts/location-context"
+    ],
+    "importDetails": [
+      {
+        "source": "@/contexts/location-context",
+        "resolved": "src/contexts/location-context",
+        "specifiers": [
+          "useLocation"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 1,
+    "externalCount": 0
+  },
+  "src/components/search/search-display.tsx": {
+    "imports": [
+      "src/components/ui/badge",
+      "src/lib/types",
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/badge",
+        "resolved": "src/components/ui/badge",
+        "specifiers": [
+          "Badge"
+        ]
+      },
+      {
+        "source": "@/lib/types",
+        "resolved": "src/lib/types",
+        "specifiers": [
+          "SearchDisplayProps"
+        ]
+      },
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next/link"
+    ],
+    "importCount": 3,
+    "externalCount": 1
+  },
+  "src/components/search/search.tsx": {
+    "imports": [
+      "src/components/ui/button",
+      "src/components/ui/input"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/input",
+        "resolved": "src/components/ui/input",
+        "specifiers": [
+          "Input"
+        ]
+      }
+    ],
+    "externalImports": [
+      "lucide-react",
+      "next/navigation",
+      "react"
+    ],
+    "importCount": 2,
+    "externalCount": 3
+  },
+  "src/components/settings/settings.tsx": {
+    "imports": [
+      "src/lib/auth-client",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ui/button",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ui/dialog",
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ui/input"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/auth-client",
+        "resolved": "src/lib/auth-client",
+        "specifiers": [
+          "changeEmail",
+          "changeName",
+          "changePassword",
+          "deleteUser"
+        ]
+      },
+      {
+        "source": "../ui/button",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "../ui/dialog",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ui/dialog",
+        "specifiers": [
+          "Dialog",
+          "DialogContent",
+          "DialogDescription",
+          "DialogFooter",
+          "DialogHeader",
+          "DialogTitle",
+          "DialogTrigger"
+        ]
+      },
+      {
+        "source": "../ui/input",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/components/ui/input",
+        "specifiers": [
+          "Input"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@hookform/resolvers/zod",
+      "react",
+      "react-hook-form",
+      "sonner",
+      "zod"
+    ],
+    "importCount": 4,
+    "externalCount": 5
+  },
+  "src/components/skeletons/map-skeleton.tsx": {
+    "imports": [
+      "src/components/ui/skeleton"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/skeleton",
+        "resolved": "src/components/ui/skeleton",
+        "specifiers": [
+          "Skeleton"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 1,
+    "externalCount": 0
+  },
+  "src/components/skeletons/search-skeleton.tsx": {
+    "imports": [
+      "src/components/skeletons/map-skeleton",
+      "src/components/ui/skeleton"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/skeletons/map-skeleton",
+        "resolved": "src/components/skeletons/map-skeleton",
+        "specifiers": [
+          "MapSkeleton"
+        ]
+      },
+      {
+        "source": "@/components/ui/skeleton",
+        "resolved": "src/components/ui/skeleton",
+        "specifiers": [
+          "Skeleton"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 2,
+    "externalCount": 0
+  },
+  "src/components/spacer.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [],
+    "importCount": 0,
+    "externalCount": 0
+  },
+  "src/components/splitter.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [],
+    "importCount": 0,
+    "externalCount": 0
+  },
+  "src/components/sponsor.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "next/image"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/components/team-member.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "next/image"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/components/theme/mode-toggle.tsx": {
+    "imports": [
+      "src/components/ui/button",
+      "src/components/ui/dropdown-menu"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/button",
+        "resolved": "src/components/ui/button",
+        "specifiers": [
+          "Button"
+        ]
+      },
+      {
+        "source": "@/components/ui/dropdown-menu",
+        "resolved": "src/components/ui/dropdown-menu",
+        "specifiers": [
+          "DropdownMenu",
+          "DropdownMenuContent",
+          "DropdownMenuItem",
+          "DropdownMenuTrigger"
+        ]
+      }
+    ],
+    "externalImports": [
+      "lucide-react",
+      "next-themes",
+      "react"
+    ],
+    "importCount": 2,
+    "externalCount": 3
+  },
+  "src/components/theme/theme-provider.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "next-themes",
+      "react"
+    ],
+    "importCount": 0,
+    "externalCount": 2
+  },
+  "src/components/ui/accordion.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@radix-ui/react-accordion",
+      "lucide-react",
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 3
+  },
+  "src/components/ui/avatar.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@radix-ui/react-avatar",
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 2
+  },
+  "src/components/ui/badge.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@radix-ui/react-slot",
+      "class-variance-authority",
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 3
+  },
+  "src/components/ui/button.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@radix-ui/react-slot",
+      "class-variance-authority",
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 3
+  },
+  "src/components/ui/card.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/components/ui/checkbox.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@radix-ui/react-checkbox",
+      "lucide-react",
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 3
+  },
+  "src/components/ui/command.tsx": {
+    "imports": [
+      "src/components/ui/dialog",
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/dialog",
+        "resolved": "src/components/ui/dialog",
+        "specifiers": [
+          "Dialog",
+          "DialogContent",
+          "DialogDescription",
+          "DialogHeader",
+          "DialogTitle"
+        ]
+      },
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "cmdk",
+      "lucide-react",
+      "react"
+    ],
+    "importCount": 2,
+    "externalCount": 3
+  },
+  "src/components/ui/dialog.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@radix-ui/react-dialog",
+      "lucide-react",
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 3
+  },
+  "src/components/ui/dropdown-menu.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@radix-ui/react-dropdown-menu",
+      "lucide-react",
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 3
+  },
+  "src/components/ui/form.tsx": {
+    "imports": [
+      "src/components/ui/label",
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/components/ui/label",
+        "resolved": "src/components/ui/label",
+        "specifiers": [
+          "Label"
+        ]
+      },
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@radix-ui/react-label",
+      "@radix-ui/react-slot",
+      "react",
+      "react-hook-form"
+    ],
+    "importCount": 2,
+    "externalCount": 4
+  },
+  "src/components/ui/input.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/components/ui/label.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@radix-ui/react-label",
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 2
+  },
+  "src/components/ui/popover.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@radix-ui/react-popover",
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 2
+  },
+  "src/components/ui/radio-group.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@radix-ui/react-radio-group",
+      "lucide-react",
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 3
+  },
+  "src/components/ui/select.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@radix-ui/react-select",
+      "lucide-react",
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 3
+  },
+  "src/components/ui/skeleton.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [],
+    "importCount": 1,
+    "externalCount": 0
+  },
+  "src/components/ui/sonner.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "next-themes",
+      "sonner"
+    ],
+    "importCount": 0,
+    "externalCount": 2
+  },
+  "src/components/ui/tabs.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@radix-ui/react-tabs",
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 2
+  },
+  "src/components/ui/textarea.tsx": {
+    "imports": [
+      "src/lib/utils"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/utils",
+        "resolved": "src/lib/utils",
+        "specifiers": [
+          "cn"
+        ]
+      }
+    ],
+    "externalImports": [
+      "react"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/contexts/location-context.tsx": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "js-cookie",
+      "react"
+    ],
+    "importCount": 0,
+    "externalCount": 2
+  },
+  "src/lib/auth-client.ts": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "better-auth/react"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/lib/auth.ts": {
+    "imports": [
+      "src/lib/db",
+      "src/lib/db/auth-schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/auth-schema",
+        "resolved": "src/lib/db/auth-schema",
+        "specifiers": [
+          "schema"
+        ]
+      }
+    ],
+    "externalImports": [
+      "better-auth",
+      "better-auth/adapters/drizzle",
+      "better-auth/next-js",
+      "form-data",
+      "mailgun.js"
+    ],
+    "importCount": 2,
+    "externalCount": 5
+  },
+  "src/lib/db/auth-schema.ts": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "drizzle-orm/pg-core"
+    ],
+    "importCount": 0,
+    "externalCount": 1
+  },
+  "src/lib/db/index.ts": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "dotenv/config",
+      "drizzle-orm/node-postgres"
+    ],
+    "importCount": 0,
+    "externalCount": 2
+  },
+  "src/lib/db/schema.ts": {
+    "imports": [
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/lib/db/auth-schema"
+    ],
+    "importDetails": [
+      {
+        "source": "./auth-schema",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/lib/db/auth-schema",
+        "specifiers": [
+          "user"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm",
+      "drizzle-orm/pg-core"
+    ],
+    "importCount": 1,
+    "externalCount": 2
+  },
+  "src/lib/db/seed.ts": {
+    "imports": [
+      "src/lib/db",
+      "src/lib/db/auth-schema",
+      "src/lib/db/schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/auth-schema",
+        "resolved": "src/lib/db/auth-schema",
+        "specifiers": [
+          "account",
+          "session",
+          "user",
+          "verification"
+        ]
+      },
+      {
+        "source": "@/lib/db/schema",
+        "resolved": "src/lib/db/schema",
+        "specifiers": [
+          "categoryTable",
+          "emailTable",
+          "entityTable",
+          "FaqTable",
+          "indicatorTable",
+          "jobTable",
+          "resourceTable",
+          "reviewIndicatorTable",
+          "reviewTable",
+          "typeIndicatorTable",
+          "typeMappingTable",
+          "typeTable"
+        ]
+      }
+    ],
+    "externalImports": [
+      "process"
+    ],
+    "importCount": 3,
+    "externalCount": 1
+  },
+  "src/lib/s3/functions.ts": {
+    "imports": [
+      "src/lib/s3"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/s3",
+        "resolved": "src/lib/s3",
+        "specifiers": [
+          "s3Client"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@aws-sdk/client-s3",
+      "@aws-sdk/s3-request-presigner",
+      "crypto"
+    ],
+    "importCount": 1,
+    "externalCount": 3
+  },
+  "src/lib/s3/index.ts": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "@aws-sdk/client-s3",
+      "dotenv/config"
+    ],
+    "importCount": 0,
+    "externalCount": 2
+  },
+  "src/lib/s3/push.ts": {
+    "imports": [
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/lib/s3"
+    ],
+    "importDetails": [
+      {
+        "source": ".",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/lib/s3",
+        "specifiers": [
+          "s3Client"
+        ]
+      }
+    ],
+    "externalImports": [
+      "@aws-sdk/client-s3"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/lib/session.ts": {
+    "imports": [
+      "src/lib/auth"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/auth",
+        "resolved": "src/lib/auth",
+        "specifiers": [
+          "auth"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next/headers"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/lib/sign-out.ts": {
+    "imports": [
+      "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/lib/auth"
+    ],
+    "importDetails": [
+      {
+        "source": "./auth",
+        "resolved": "/Users/luccageldens/Documents/Programming/GitHub/onlinekozijnen/accuguide/src/lib/auth",
+        "specifiers": [
+          "auth"
+        ]
+      }
+    ],
+    "externalImports": [
+      "next/headers"
+    ],
+    "importCount": 1,
+    "externalCount": 1
+  },
+  "src/lib/sitemap/index.ts": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [],
+    "importCount": 0,
+    "externalCount": 0
+  },
+  "src/lib/types.ts": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [],
+    "importCount": 0,
+    "externalCount": 0
+  },
+  "src/lib/user-info.ts": {
+    "imports": [
+      "src/lib/db",
+      "src/lib/db/auth-schema"
+    ],
+    "importDetails": [
+      {
+        "source": "@/lib/db",
+        "resolved": "src/lib/db",
+        "specifiers": [
+          "db"
+        ]
+      },
+      {
+        "source": "@/lib/db/auth-schema",
+        "resolved": "src/lib/db/auth-schema",
+        "specifiers": [
+          "user"
+        ]
+      }
+    ],
+    "externalImports": [
+      "drizzle-orm"
+    ],
+    "importCount": 2,
+    "externalCount": 1
+  },
+  "src/lib/utils.ts": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "importCount": 0,
+    "externalCount": 2
+  },
+  "src/proxy.ts": {
+    "imports": [],
+    "importDetails": [],
+    "externalImports": [
+      "better-auth/cookies",
+      "next/server"
+    ],
+    "importCount": 0,
+    "externalCount": 2
+  }
+}

@@ -1,0 +1,55 @@
+digraph DependencyGraph {
+  rankdir=LR;
+  node [shape=box, style=rounded, fontname="Arial"];
+  edge [color="#666666"];
+
+  src_lib_utils_ts [label="utils\n(src/lib)"];
+  src_lib_db_schema_ts [label="schema\n(lib/db)"];
+  src_components_layout_layout_display_tsx [label="layout-display\n(components/layout)"];
+  src_components_ui_button_tsx [label="button\n(components/ui)"];
+  src_components_ui_input_tsx [label="input\n(components/ui)"];
+  src_components_ui_card_tsx [label="card\n(components/ui)"];
+  src_lib_auth_client_ts [label="auth-client\n(src/lib)"];
+  src_lib_session_ts [label="session\n(src/lib)"];
+  src_components_ui_form_tsx [label="form\n(components/ui)"];
+  src_lib_types_ts [label="types\n(src/lib)"];
+  src_components_admin_types_categories_indicators_tsx [label="types-categories-indicators\n(components/admin)"];
+  src_components_forms_signin_form_tsx [label="signin-form\n(components/forms)"];
+  src_components_forms_signup_form_tsx [label="signup-form\n(components/forms)"];
+  src_components_reviews_review_display_tsx [label="review-display\n(components/reviews)"];
+  src_app_help_feedback_page_tsx [label="page\n(help/feedback)"];
+  src_app_info_about_page_tsx [label="page\n(info/about)"];
+  src_app_layout_tsx [label="layout\n(src/app)"];
+  src_app_search_page_tsx [label="page\n(app/search)"];
+  src_app_settings_page_tsx [label="page\n(app/settings)"];
+  src_components_admin_information_tsx [label="information\n(components/admin)"];
+
+  src_components_layout_layout_display_tsx -> src_lib_utils_ts;
+  src_components_ui_button_tsx -> src_lib_utils_ts;
+  src_components_ui_input_tsx -> src_lib_utils_ts;
+  src_components_ui_card_tsx -> src_lib_utils_ts;
+  src_components_ui_form_tsx -> src_lib_utils_ts;
+  src_components_admin_types_categories_indicators_tsx -> src_components_ui_button_tsx;
+  src_components_admin_types_categories_indicators_tsx -> src_components_ui_input_tsx;
+  src_components_admin_types_categories_indicators_tsx -> src_lib_utils_ts;
+  src_components_forms_signin_form_tsx -> src_components_ui_button_tsx;
+  src_components_forms_signin_form_tsx -> src_components_ui_form_tsx;
+  src_components_forms_signin_form_tsx -> src_components_ui_input_tsx;
+  src_components_forms_signin_form_tsx -> src_lib_auth_client_ts;
+  src_components_forms_signup_form_tsx -> src_components_ui_button_tsx;
+  src_components_forms_signup_form_tsx -> src_components_ui_form_tsx;
+  src_components_forms_signup_form_tsx -> src_components_ui_input_tsx;
+  src_components_forms_signup_form_tsx -> src_lib_auth_client_ts;
+  src_components_reviews_review_display_tsx -> src_lib_session_ts;
+  src_components_reviews_review_display_tsx -> src_lib_types_ts;
+  src_components_reviews_review_display_tsx -> src_lib_utils_ts;
+  src_app_help_feedback_page_tsx -> src_components_ui_button_tsx;
+  src_app_help_feedback_page_tsx -> src_components_ui_form_tsx;
+  src_app_help_feedback_page_tsx -> src_components_ui_input_tsx;
+  src_app_search_page_tsx -> src_lib_types_ts;
+  src_app_settings_page_tsx -> src_components_reviews_review_display_tsx;
+  src_app_settings_page_tsx -> src_lib_db_schema_ts;
+  src_app_settings_page_tsx -> src_lib_session_ts;
+  src_components_admin_information_tsx -> src_components_ui_button_tsx;
+  src_components_admin_information_tsx -> src_components_ui_input_tsx;
+}
