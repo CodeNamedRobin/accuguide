@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AST Graph Viewer</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Monaco', 'Menlo', monospace; background: #0d1117; color: #c9d1d9; overflow: hidden; }
+    
+    #toolbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: #161b22; padding: 12px 20px; display: flex; gap: 12px; align-items: center;
+      border-bottom: 1px solid #30363d;
+    }
+    #toolbar h1 { font-size: 14px; color: #58a6ff; margin-right: 20px; }
+    #toolbar button {
+      background: #21262d; color: #c9d1d9; border: 1px solid #30363d;
+      padding: 6px 12px; cursor: pointer; border-radius: 6px; font-size: 12px;
+    }
+    #toolbar button:hover { background: #30363d; }
+    #toolbar button.active { background: #238636; border-color: #238636; }
+    #toolbar select, #toolbar input {
+      background: #21262d; color: #c9d1d9; border: 1px solid #30363d;
+      padding: 6px 10px; border-radius: 6px; font-size: 12px;
+    }
+    #toolbar input { width: 200px; }
+    #toolbar label { font-size: 12px; color: #8b949e; }
+    
+    #dropZone {
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      border: 2px dashed #30363d; padding: 60px 80px; text-align: center; border-radius: 12px;
+      background: #161b22;
+    }
+    #dropZone.dragover { border-color: #58a6ff; background: #58a6ff11; }
+    #dropZone.hidden { display: none; }
+    
+    #graph { width: 100vw; height: 100vh; padding-top: 50px; }
+    
+    .node circle { stroke-width: 2px; cursor: pointer; }
+    .node text { font-size: 10px; fill: #c9d1d9; pointer-events: none; }
+    .node.highlight circle { stroke: #f0883e !important; stroke-width: 3px; }
+    
+    .link { fill: none; stroke: #30363d; stroke-width: 1.5px; }
+    .link.highlight { stroke: #f0883e; stroke-width: 2px; }
+    
+    #tooltip {
+      position: fixed; background: #21262d; border: 1px solid #30363d;
+      padding: 10px 14px; border-radius: 8px; font-size: 11px;
+      pointer-events: none; opacity: 0; max-width: 350px; z-index: 200;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    #tooltip .type { color: #7ee787; font-weight: bold; }
+    #tooltip .prop { color: #8b949e; }
+    #tooltip .value { color: #a5d6ff; }
+    
+    #legend {
+      position: fixed; bottom: 20px; left: 20px; background: #161b22;
+      border: 1px solid #30363d; padding: 12px 16px; border-radius: 8px; font-size: 11px;
+    }
+    #legend h3 { margin-bottom: 8px; color: #8b949e; font-size: 10px; text-transform: uppercase; }
+    #legend .item { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+    #legend .dot { width: 12px; height: 12px; border-radius: 50%; }
+    
+    #stats {
+      position: fixed; bottom: 20px; right: 20px; background: #161b22;
+      border: 1px solid #30363d; padding: 12px 16px; border-radius: 8px; font-size: 11px;
+      color: #8b949e;
+    }
+  </style>
+</head>
+<body>
+  <div id="toolbar">
+    <h1>🌐 AST Graph</h1>
+    <button onclick="resetZoom()">Reset View</button>
+    <button onclick="toggleLayout()" id="layoutBtn">Radial Layout</button>
+    <label>Depth: <select id="depthSelect" onchange="setDepth(this.value)">
+      <option value="2">2</option>
+      <option value="3" selected>3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="10">All</option>
+    </select></label>
+    <label>Filter: <select id="filterSelect" onchange="filterNodes(this.value)">
+      <option value="">All Nodes</option>
+      <option value="ImportDeclaration">Imports</option>
+      <option value="ExportDeclaration">Exports</option>
+      <option value="FunctionDeclaration,ArrowFunctionExpression">Functions</option>
+      <option value="JSXElement,JSXFragment">JSX</option>
+      <option value="VariableDeclaration">Variables</option>
+      <option value="CallExpression">Calls</option>
+    </select></label>
+    <input type="text" id="search" placeholder="Search nodes..." oninput="searchNodes(this.value)">
+  </div>
+
+  <div id="dropZone">
+    Drop your <strong>.ast.json</strong> file here<br><br>
+    <label style="color: #58a6ff; cursor: pointer;">or click to browse
+      <input type="file" accept=".json" id="fileInput" style="display: none;">
+    </label>
+  </div>
+
+  <svg id="graph"></svg>
+  
+  <div id="tooltip"></div>
+  
+  <div id="legend" style="display: none;">
+    <h3>Node Types</h3>
+    <div class="item"><div class="dot" style="background: #f0883e;"></div> Program</div>
+    <div class="item"><div class="dot" style="background: #a371f7;"></div> Import/Export</div>
+    <div class="item"><div class="dot" style="background: #7ee787;"></div> Function</div>
+    <div class="item"><div class="dot" style="background: #58a6ff;"></div> JSX</div>
+    <div class="item"><div class="dot" style="background: #f778ba;"></div> Variable</div>
+    <div class="item"><div class="dot" style="background: #8b949e;"></div> Other</div>
+  </div>
+  
+  <div id="stats" style="display: none;"></div>
+
+  <script>
+    let astData = null;
+    let currentLayout = 'tree';
+    let currentDepth = 3;
+    let svg, g, zoom, simulation;
+    let nodes = [], links = [];
+
+    const nodeColors = {
+      'Program': '#f0883e',
+      'File': '#f0883e',
+      'ImportDeclaration': '#a371f7',
+      'ExportDefaultDeclaration': '#a371f7',
+      'ExportNamedDeclaration': '#a371f7',
+      'FunctionDeclaration': '#7ee787',
+      'ArrowFunctionExpression': '#7ee787',
+      'FunctionExpression': '#7ee787',
+      'JSXElement': '#58a6ff',
+      'JSXFragment': '#58a6ff',
+      'JSXOpeningElement': '#58a6ff',
+      'JSXClosingElement': '#58a6ff',
+      'JSXIdentifier': '#58a6ff',
+      'JSXAttribute': '#58a6ff',
+      'VariableDeclaration': '#f778ba',
+      'VariableDeclarator': '#f778ba',
+      'Identifier': '#79c0ff',
+      'CallExpression': '#ffa657',
+      'MemberExpression': '#ffa657',
+      'default': '#8b949e'
+    };
+
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const tooltip = document.getElementById('tooltip');
+
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+    });
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files[0]) loadFile(e.target.files[0]);
+    });
+
+    function loadFile(file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          astData = JSON.parse(e.target.result);
+          dropZone.classList.add('hidden');
+          document.getElementById('legend').style.display = 'block';
+          document.getElementById('stats').style.display = 'block';
+          initGraph();
+          renderGraph();
+        } catch (err) {
+          alert('Invalid JSON file: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function initGraph() {
+      svg = d3.select('#graph')
+        .attr('width', window.innerWidth)
+        .attr('height', window.innerHeight);
+
+      svg.selectAll('*').remove();
+
+      g = svg.append('g');
+
+      // Add arrow marker
+      svg.append('defs').append('marker')
+        .attr('id', 'arrow')
+        .attr('viewBox', '0 -5 10 10')
+        .attr('refX', 20)
+        .attr('refY', 0)
+        .attr('markerWidth', 6)
+        .attr('markerHeight', 6)
+        .attr('orient', 'auto')
+        .append('path')
+        .attr('d', 'M0,-5L10,0L0,5')
+        .attr('fill', '#30363d');
+
+      zoom = d3.zoom()
+        .scaleExtent([0.1, 4])
+        .on('zoom', (e) => g.attr('transform', e.transform));
+
+      svg.call(zoom);
+    }
+
+    function buildGraphData(node, parentId = null, depth = 0, maxDepth = 3, filter = '') {
+      if (!node || typeof node !== 'object' || depth > maxDepth) return;
+      
+      const nodeType = node.type || 'Object';
+      
+      // Apply filter
+      if (filter && depth > 0) {
+        const filterTypes = filter.split(',');
+        const isRelevant = filterTypes.some(t => nodeType.includes(t)) || 
+                          hasDescendantType(node, filterTypes, maxDepth - depth);
+        if (!isRelevant && parentId !== null) return;
+      }
+
+      const id = nodes.length;
+      const label = getNodeLabel(node);
+      
+      nodes.push({
+        id,
+        type: nodeType,
+        label,
+        color: nodeColors[nodeType] || nodeColors.default,
+        data: node,
+        depth
+      });
+
+      if (parentId !== null) {
+        links.push({ source: parentId, target: id });
+      }
+
+      // Process children
+      const skipKeys = ['type', 'start', 'end', 'loc', 'range', 'comments', 'tokens'];
+      for (const key in node) {
+        if (skipKeys.includes(key)) continue;
+        const value = node[key];
+        
+        if (Array.isArray(value)) {
+          value.forEach(item => {
+            if (item && typeof item === 'object' && item.type) {
+              buildGraphData(item, id, depth + 1, maxDepth, filter);
+            }
+          });
+        } else if (value && typeof value === 'object' && value.type) {
+          buildGraphData(value, id, depth + 1, maxDepth, filter);
+        }
+      }
+    }
+
+    function hasDescendantType(node, types, maxDepth) {
+      if (maxDepth <= 0 || !node || typeof node !== 'object') return false;
+      if (types.some(t => (node.type || '').includes(t))) return true;
+      
+      for (const key in node) {
+        if (['type', 'start', 'end', 'loc'].includes(key)) continue;
+        const value = node[key];
+        if (Array.isArray(value)) {
+          if (value.some(item => hasDescendantType(item, types, maxDepth - 1))) return true;
+        } else if (typeof value === 'object') {
+          if (hasDescendantType(value, types, maxDepth - 1)) return true;
+        }
+      }
+      return false;
+    }
+
+    function getNodeLabel(node) {
+      if (node.name) return node.name;
+      if (node.id?.name) return node.id.name;
+      if (node.source?.value) return node.source.value;
+      if (node.value !== undefined && typeof node.value !== 'object') {
+        const str = String(node.value);
+        return str.length > 20 ? str.slice(0, 20) + '...' : str;
+      }
+      return node.type || '';
+    }
+
+    function renderGraph() {
+      nodes = [];
+      links = [];
+      
+      const filter = document.getElementById('filterSelect').value;
+      buildGraphData(astData, null, 0, currentDepth, filter);
+      
+      document.getElementById('stats').innerHTML = `${nodes.length} nodes | ${links.length} edges`;
+
+      g.selectAll('*').remove();
+
+      if (currentLayout === 'tree') {
+        renderTreeLayout();
+      } else {
+        renderForceLayout();
+      }
+    }
+
+    function renderTreeLayout() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      const root = d3.stratify()
+        .id(d => d.id)
+        .parentId(d => {
+          const link = links.find(l => l.target === d.id);
+          return link ? link.source : null;
+        })(nodes);
+
+      const treeLayout = d3.tree()
+        .size([height - 150, width - 300])
+        .separation((a, b) => (a.parent === b.parent ? 1 : 1.5));
+
+      treeLayout(root);
+
+      // Links
+      g.selectAll('.link')
+        .data(root.links())
+        .join('path')
+        .attr('class', 'link')
+        .attr('d', d3.linkHorizontal()
+          .x(d => d.y + 100)
+          .y(d => d.x + 50));
+
+      // Nodes
+      const node = g.selectAll('.node')
+        .data(root.descendants())
+        .join('g')
+        .attr('class', 'node')
+        .attr('transform', d => `translate(${d.y + 100},${d.x + 50})`)
+        .on('mouseover', showTooltip)
+        .on('mouseout', hideTooltip)
+        .on('click', highlightPath);
+
+      node.append('circle')
+        .attr('r', d => Math.max(6, 12 - d.depth))
+        .attr('fill', d => d.data.color)
+        .attr('stroke', d => d3.color(d.data.color).darker(0.5));
+
+      node.append('text')
+        .attr('dx', d => d.children ? -10 : 10)
+        .attr('dy', 4)
+        .attr('text-anchor', d => d.children ? 'end' : 'start')
+        .text(d => d.data.label || d.data.type);
+
+      // Center view
+      svg.call(zoom.transform, d3.zoomIdentity.translate(50, 0).scale(0.8));
+    }
+
+    function renderForceLayout() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      simulation = d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(links).id(d => d.id).distance(60))
+        .force('charge', d3.forceManyBody().strength(-200))
+        .force('center', d3.forceCenter(width / 2, height / 2))
+        .force('collision', d3.forceCollide().radius(25));
+
+      const link = g.selectAll('.link')
+        .data(links)
+        .join('line')
+        .attr('class', 'link')
+        .attr('marker-end', 'url(#arrow)');
+
+      const node = g.selectAll('.node')
+        .data(nodes)
+        .join('g')
+        .attr('class', 'node')
+        .call(d3.drag()
+          .on('start', dragstarted)
+          .on('drag', dragged)
+          .on('end', dragended))
+        .on('mouseover', showTooltip)
+        .on('mouseout', hideTooltip)
+        .on('click', highlightPath);
+
+      node.append('circle')
+        .attr('r', d => Math.max(6, 12 - d.depth))
+        .attr('fill', d => d.color)
+        .attr('stroke', d => d3.color(d.color).darker(0.5));
+
+      node.append('text')
+        .attr('dx', 12)
+        .attr('dy', 4)
+        .text(d => d.label || d.type);
+
+      simulation.on('tick', () => {
+        link
+          .attr('x1', d => d.source.x)
+          .attr('y1', d => d.source.y)
+          .attr('x2', d => d.target.x)
+          .attr('y2', d => d.target.y);
+        node.attr('transform', d => `translate(${d.x},${d.y})`);
+      });
+    }
+
+    function dragstarted(event, d) {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+
+    function dragged(event, d) {
+      d.fx = event.x;
+      d.fy = event.y;
+    }
+
+    function dragended(event, d) {
+      if (!event.active) simulation.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+    }
+
+    function showTooltip(event, d) {
+      const data = d.data?.data || d.data || d;
+      let html = `<div class="type">${data.type || 'Node'}</div>`;
+      
+      const props = ['name', 'value', 'raw', 'kind', 'operator', 'computed', 'async', 'generator'];
+      props.forEach(prop => {
+        if (data[prop] !== undefined) {
+          html += `<div><span class="prop">${prop}:</span> <span class="value">${JSON.stringify(data[prop])}</span></div>`;
+        }
+      });
+      
+      if (data.id?.name) html += `<div><span class="prop">id:</span> <span class="value">"${data.id.name}"</span></div>`;
+      if (data.source?.value) html += `<div><span class="prop">source:</span> <span class="value">"${data.source.value}"</span></div>`;
+      
+      tooltip.innerHTML = html;
+      tooltip.style.left = (event.pageX + 15) + 'px';
+      tooltip.style.top = (event.pageY + 15) + 'px';
+      tooltip.style.opacity = 1;
+    }
+
+    function hideTooltip() {
+      tooltip.style.opacity = 0;
+    }
+
+    function highlightPath(event, d) {
+      g.selectAll('.node').classed('highlight', false);
+      g.selectAll('.link').classed('highlight', false);
+      
+      // Highlight this node
+      d3.select(this).classed('highlight', true);
+      
+      // Highlight path to root
+      let current = d;
+      while (current.parent) {
+        g.selectAll('.link')
+          .filter(l => l.target === current)
+          .classed('highlight', true);
+        current = current.parent;
+        g.selectAll('.node')
+          .filter(n => n === current)
+          .classed('highlight', true);
+      }
+    }
+
+    function resetZoom() {
+      svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
+    }
+
+    function toggleLayout() {
+      currentLayout = currentLayout === 'tree' ? 'force' : 'tree';
+      document.getElementById('layoutBtn').textContent = currentLayout === 'tree' ? 'Radial Layout' : 'Tree Layout';
+      document.getElementById('layoutBtn').classList.toggle('active', currentLayout === 'force');
+      if (astData) renderGraph();
+    }
+
+    function setDepth(depth) {
+      currentDepth = parseInt(depth);
+      if (astData) renderGraph();
+    }
+
+    function filterNodes(filter) {
+      if (astData) renderGraph();
+    }
+
+    function searchNodes(query) {
+      g.selectAll('.node').classed('highlight', false);
+      if (!query.trim()) return;
+      
+      const q = query.toLowerCase();
+      g.selectAll('.node')
+        .filter(d => {
+          const data = d.data?.data || d.data || d;
+          const searchStr = JSON.stringify(data).toLowerCase();
+          return searchStr.includes(q);
+        })
+        .classed('highlight', true);
+    }
+
+    window.addEventListener('resize', () => {
+      if (svg) {
+        svg.attr('width', window.innerWidth).attr('height', window.innerHeight);
+      }
+    });
+  </script>
+</body>
+</html>

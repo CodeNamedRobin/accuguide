@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AST Viewer</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Monaco', 'Menlo', monospace; font-size: 13px; background: #1e1e1e; color: #d4d4d4; padding: 20px; }
+    h1 { color: #569cd6; margin-bottom: 20px; font-size: 18px; }
+    .controls { margin-bottom: 20px; display: flex; gap: 10px; align-items: center; }
+    .controls button { background: #0e639c; color: white; border: none; padding: 8px 16px; cursor: pointer; border-radius: 4px; }
+    .controls button:hover { background: #1177bb; }
+    .controls input { padding: 8px; background: #3c3c3c; border: 1px solid #555; color: white; border-radius: 4px; width: 300px; }
+    .tree { padding-left: 0; }
+    .tree ul { list-style: none; padding-left: 20px; border-left: 1px dashed #444; margin-left: 8px; }
+    .tree li { position: relative; padding: 3px 0; }
+    .node { cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+    .node:hover { background: #264f78; }
+    .toggle { width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; color: #888; font-size: 10px; }
+    .type { color: #4ec9b0; font-weight: bold; }
+    .key { color: #9cdcfe; }
+    .string { color: #ce9178; }
+    .number { color: #b5cea8; }
+    .boolean { color: #569cd6; }
+    .null { color: #569cd6; font-style: italic; }
+    .collapsed > ul { display: none; }
+    .leaf { color: #808080; margin-left: 4px; }
+    .count { color: #666; font-size: 11px; }
+    .highlight { background: #613214 !important; }
+    #dropZone { border: 2px dashed #555; padding: 40px; text-align: center; margin-bottom: 20px; border-radius: 8px; }
+    #dropZone.dragover { border-color: #0e639c; background: #0e639c22; }
+    .hidden { display: none; }
+    .stats { color: #888; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <h1>🌳 AST Viewer</h1>
+  
+  <div id="dropZone">
+    Drop an AST JSON file here or <label style="color: #569cd6; cursor: pointer;">browse<input type="file" accept=".json" id="fileInput" style="display: none;"></label>
+  </div>
+  
+  <div id="viewer" class="hidden">
+    <div class="controls">
+      <button onclick="expandAll()">Expand All</button>
+      <button onclick="collapseAll()">Collapse All</button>
+      <button onclick="expandToDepth(2)">Depth 2</button>
+      <button onclick="expandToDepth(3)">Depth 3</button>
+      <input type="text" id="search" placeholder="Search nodes (e.g., ImportDeclaration, function name...)" oninput="searchNodes(this.value)">
+    </div>
+    <div class="stats" id="stats"></div>
+    <div class="tree" id="tree"></div>
+  </div>
+
+  <script>
+    let astData = null;
+
+    // File handling
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const viewer = document.getElementById('viewer');
+
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file) loadFile(file);
+    });
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files[0]) loadFile(e.target.files[0]);
+    });
+
+    function loadFile(file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          astData = JSON.parse(e.target.result);
+          renderAST(astData);
+          dropZone.classList.add('hidden');
+          viewer.classList.remove('hidden');
+        } catch (err) {
+          alert('Invalid JSON file');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function renderAST(ast) {
+      const stats = countNodes(ast);
+      document.getElementById('stats').textContent = `${stats.total} nodes | ${stats.types} unique types`;
+      document.getElementById('tree').innerHTML = '<ul>' + renderNode(ast, '', 0) + '</ul>';
+      expandToDepth(2);
+    }
+
+    function countNodes(obj, types = new Set()) {
+      let count = 0;
+      if (obj && typeof obj === 'object') {
+        if (obj.type) types.add(obj.type);
+        count = 1;
+        for (const key in obj) {
+          if (Array.isArray(obj[key])) {
+            obj[key].forEach(item => { const r = countNodes(item, types); count += r.total; });
+          } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+            const r = countNodes(obj[key], types);
+            count += r.total;
+          }
+        }
+      }
+      return { total: count, types: types.size };
+    }
+
+    function renderNode(node, key, depth) {
+      if (node === null) return `<li><span class="key">${key}:</span> <span class="null">null</span></li>`;
+      if (typeof node !== 'object') {
+        const type = typeof node;
+        const display = type === 'string' ? `"${escapeHtml(node.length > 50 ? node.slice(0, 50) + '...' : node)}"` : String(node);
+        return `<li><span class="key">${key}:</span> <span class="${type}">${display}</span></li>`;
+      }
+      
+      if (Array.isArray(node)) {
+        if (node.length === 0) return `<li><span class="key">${key}:</span> <span class="leaf">[]</span></li>`;
+        const items = node.map((item, i) => renderNode(item, i, depth + 1)).join('');
+        return `<li class="collapsed"><span class="node" onclick="toggle(this.parentElement)"><span class="toggle">▶</span><span class="key">${key}:</span> <span class="count">[${node.length}]</span></span><ul>${items}</ul></li>`;
+      }
+
+      const nodeType = node.type;
+      const keys = Object.keys(node).filter(k => k !== 'type' && k !== 'start' && k !== 'end' && k !== 'loc');
+      
+      if (keys.length === 0) {
+        return `<li><span class="key">${key}:</span> ${nodeType ? `<span class="type">${nodeType}</span>` : '{}'}</li>`;
+      }
+
+      const children = keys.map(k => renderNode(node[k], k, depth + 1)).join('');
+      const label = nodeType ? `<span class="type">${nodeType}</span>` : `<span class="key">${key}</span>`;
+      const preview = getPreview(node);
+      
+      return `<li class="collapsed" data-type="${nodeType || ''}"><span class="node" onclick="toggle(this.parentElement)"><span class="toggle">▶</span>${key ? `<span class="key">${key}:</span> ` : ''}${label}${preview}</span><ul>${children}</ul></li>`;
+    }
+
+    function getPreview(node) {
+      if (node.name) return ` <span class="string">"${escapeHtml(node.name)}"</span>`;
+      if (node.value !== undefined && typeof node.value !== 'object') return ` <span class="string">${JSON.stringify(node.value)}</span>`;
+      if (node.raw) return ` <span class="string">${escapeHtml(node.raw.slice(0, 30))}</span>`;
+      return '';
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function toggle(el) {
+      el.classList.toggle('collapsed');
+      const toggle = el.querySelector(':scope > .node > .toggle');
+      if (toggle) toggle.textContent = el.classList.contains('collapsed') ? '▶' : '▼';
+    }
+
+    function expandAll() {
+      document.querySelectorAll('.tree li.collapsed').forEach(el => {
+        el.classList.remove('collapsed');
+        const toggle = el.querySelector(':scope > .node > .toggle');
+        if (toggle) toggle.textContent = '▼';
+      });
+    }
+
+    function collapseAll() {
+      document.querySelectorAll('.tree li:has(ul)').forEach(el => {
+        el.classList.add('collapsed');
+        const toggle = el.querySelector(':scope > .node > .toggle');
+        if (toggle) toggle.textContent = '▶';
+      });
+    }
+
+    function expandToDepth(maxDepth) {
+      collapseAll();
+      function expand(el, depth) {
+        if (depth >= maxDepth) return;
+        el.classList.remove('collapsed');
+        const toggle = el.querySelector(':scope > .node > .toggle');
+        if (toggle) toggle.textContent = '▼';
+        el.querySelectorAll(':scope > ul > li').forEach(child => expand(child, depth + 1));
+      }
+      document.querySelectorAll('.tree > ul > li').forEach(el => expand(el, 0));
+    }
+
+    function searchNodes(query) {
+      document.querySelectorAll('.highlight').forEach(el => el.classList.remove('highlight'));
+      if (!query.trim()) return;
+      
+      const q = query.toLowerCase();
+      document.querySelectorAll('.tree li').forEach(el => {
+        const text = el.querySelector(':scope > .node')?.textContent.toLowerCase() || '';
+        if (text.includes(q)) {
+          el.classList.add('highlight');
+          // Expand parents
+          let parent = el.parentElement?.closest('li');
+          while (parent) {
+            parent.classList.remove('collapsed');
+            const toggle = parent.querySelector(':scope > .node > .toggle');
+            if (toggle) toggle.textContent = '▼';
+            parent = parent.parentElement?.closest('li');
+          }
+        }
+      });
+    }
+
+    // Auto-load if there's a file path in URL hash
+    if (location.hash) {
+      fetch(decodeURIComponent(location.hash.slice(1)))
+        .then(r => r.json())
+        .then(data => { astData = data; renderAST(data); dropZone.classList.add('hidden'); viewer.classList.remove('hidden'); })
+        .catch(() => {});
+    }
+  </script>
+</body>
+</html>
