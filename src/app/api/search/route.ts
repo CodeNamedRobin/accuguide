@@ -7,6 +7,11 @@ import { GoogleSearchResponse, SearchDisplayType } from '@/lib/types'
 // Maximum search result per page for pagination
 const ITEMS_PER_PAGE = 18
 
+type DbSearchDisplayType = SearchDisplayType & {
+  city: string
+  state: string
+}
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams
@@ -14,17 +19,33 @@ export async function GET(request: NextRequest) {
     const latitude = searchParams.get('latitude')
     const longitude = searchParams.get('longitude')
     const curPage = parseInt(searchParams.get('page') || '1', 10)
+
+    // --- Filters: type, city, state (support comma-separated lists) ---
+    const parseList = (v: string | null) =>
+      (v || '')
+        .split(',')
+        .map((s) => s.trim().toLowerCase())
+        .filter(Boolean)
+
+    const typeFilters = parseList(searchParams.get('type'))
+    const cityFilters = parseList(searchParams.get('city'))
+    const stateFilters = parseList(searchParams.get('state'))
+
     const apiKey = process.env.BACKEND_GOOGLE_MAPS_API_KEY
     if (!apiKey) {
       return NextResponse.json({ error: 'API key not found' }, { status: 500 })
     }
 
     // Build URL with optional location parameters
-    let url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(query)}&key=${apiKey}`
+    // We keep Google Text Search unmodified by filters for consistent behavior and apply filters after fetch.
+    let url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(
+      query,
+    )}&key=${apiKey}`
 
-    // Only add location and radius if both latitude and longitude are provided
     if (latitude && longitude) {
-      url += `&location=${encodeURIComponent(latitude)},${encodeURIComponent(longitude)}&radius=5000`
+      url += `&location=${encodeURIComponent(latitude)},${encodeURIComponent(
+        longitude,
+      )}&radius=5000`
     }
 
     const response = await fetch(url)
@@ -39,30 +60,63 @@ export async function GET(request: NextRequest) {
     }
 
     const googleResponse = await response.json()
-    const formattedGoogleResponse: SearchDisplayType[] =
-      googleResponse.results.map((place: GoogleSearchResponse) => ({
-        googleId: place.place_id,
-        name: place.name,
-        address: place.formatted_address,
-        type: place.types[0],
-        lat: place.geometry.location.lat,
-        lng: place.geometry.location.lng,
-      }))
+    console.log(googleResponse)
+    // Format Google results
+    let formattedGoogleResponse: SearchDisplayType[] = (
+      googleResponse.results || []
+    ).map((place: GoogleSearchResponse) => ({
+      googleId: place.place_id,
+      name: place.name,
+      address: place.formatted_address,
+      type: (place.types && place.types[0]) || 'unknown',
+      lat: place.geometry.location.lat,
+      lng: place.geometry.location.lng,
+    }))
 
+    // --- Apply filters to Google results (post-fetch) ---
+    if (typeFilters.length > 0) {
+      formattedGoogleResponse = formattedGoogleResponse.filter((p) =>
+        typeFilters.includes(String(p.type || '').toLowerCase()),
+      )
+    }
+
+    if (cityFilters.length > 0) {
+      const cityMatch = (addr: string) => {
+        const lower = (addr || '').toLowerCase()
+        return cityFilters.some((c) => lower.includes(c))
+      }
+      formattedGoogleResponse = formattedGoogleResponse.filter((p) =>
+        cityMatch(p.address || ''),
+      )
+    }
+
+    if (stateFilters.length > 0) {
+      const stateMatch = (addr: string) => {
+        const lower = (addr || '').toLowerCase()
+        return stateFilters.some((s) => lower.includes(s))
+      }
+      formattedGoogleResponse = formattedGoogleResponse.filter((p) =>
+        stateMatch(p.address || ''),
+      )
+    }
+
+    // Prepare DB results
     const formattedQuery = query.replace(/\s+/g, ' & ') + ':*'
-    let formattedDbResponse: SearchDisplayType[] = []
+    let formattedDbResponse: DbSearchDisplayType[] = []
+
     const dbCount = await db.select({ count: count() }).from(entityTable)
     if (dbCount[0].count !== 0) {
+      // Keep your existing full-text search condition
       const searchDbQuery = sql`(
         setweight(to_tsvector('english', ${entityTable.name}), 'A') ||
-        setweight(to_tsvector('english', ${entityTable.city}), 'A') ||
-        setweight(to_tsvector('english', ${entityTable.state || ''}), 'A') ||
-        setweight(to_tsvector('english', ${entityTable.displayType}), 'A') ||
-        setweight(to_tsvector('english', ${entityTable.type}), 'B') ||
-        setweight(to_tsvector('english', ${entityTable.description || ''}), 'B')
-
-        @@ to_tsquery('english', ${formattedQuery})
+      setweight(to_tsvector('english', ${entityTable.city}), 'A') ||
+      setweight(to_tsvector('english', ${entityTable.state || ''}), 'A') ||
+      setweight(to_tsvector('english', ${entityTable.displayType}), 'A') ||
+      setweight(to_tsvector('english', ${entityTable.type}), 'B') ||
+      setweight(to_tsvector('english', ${entityTable.description || ''}), 'B')
+      @@ to_tsquery('english', ${formattedQuery})
       )`
+
       const dbResponse = await db
         .select()
         .from(entityTable)
@@ -74,32 +128,100 @@ export async function GET(request: NextRequest) {
         name: place.name,
         address: `${place.address1} ${place.address2 || ''}, ${place.city}, ${place.state}, ${place.zip}`,
         type: place.displayType,
+        city: place.city,
+        state: place.state,
         lat: Number(place.lat),
         lng: Number(place.lon),
-        aiScore: place.aiScore || 0,
+        aiScore: Number(place.aiScore || 0),
       }))
+
+      // --- Apply filters to DB results (in-memory, case-insensitive) ---
+      if (typeFilters.length > 0) {
+        formattedDbResponse = formattedDbResponse.filter((p) =>
+          typeFilters.includes(String(p.type || '').toLowerCase()),
+        )
+      }
+      if (cityFilters.length > 0) {
+        formattedDbResponse = formattedDbResponse.filter(
+          (p) =>
+            cityFilters.includes(String(p.city || '').toLowerCase()) ||
+            // Fallback: try address text contains city (covers formatting variations)
+            cityFilters.some((c) =>
+              (p.address || '').toLowerCase().includes(c),
+            ),
+        )
+      }
+      if (stateFilters.length > 0) {
+        formattedDbResponse = formattedDbResponse.filter(
+          (p) =>
+            stateFilters.includes(String(p.state || '').toLowerCase()) ||
+            stateFilters.some((s) =>
+              (p.address || '').toLowerCase().includes(s),
+            ),
+        )
+      }
     }
 
+    // De-duplicate: prefer DB entries over Google entries by googleId
     const dbIds = new Set(formattedDbResponse.map((place) => place.googleId))
     const filteredGoogleResponse = formattedGoogleResponse.filter(
       (place) => !dbIds.has(place.googleId),
     )
-    // combine search results to single list for pagination
-    const combined: SearchDisplayType[] = [
-      ...formattedDbResponse,
-      ...filteredGoogleResponse,
-    ]
-    const totalResults = combined.length
-    const totalPages = Math.ceil(totalResults / ITEMS_PER_PAGE)
-    const offset = (curPage - 1) * ITEMS_PER_PAGE
-    const paginated = combined.slice(offset, offset + ITEMS_PER_PAGE)
+
+    // Section-based pagination: DB results first, then Google results
+    const dbTotalPages = Math.ceil(formattedDbResponse.length / ITEMS_PER_PAGE)
+    const googleTotalPages = Math.ceil(
+      filteredGoogleResponse.length / ITEMS_PER_PAGE,
+    )
+    const totalPages = dbTotalPages + googleTotalPages
+    const totalResults =
+      formattedDbResponse.length + filteredGoogleResponse.length
+
+    // Determine which section the current page falls into
+    let currentSection: 'database' | 'google'
+    let sectionPage: number
+    let paginatedData: SearchDisplayType[] = []
+
+    if (curPage <= dbTotalPages) {
+      // Current page is in the database section
+      currentSection = 'database'
+      sectionPage = curPage
+      const offset = (sectionPage - 1) * ITEMS_PER_PAGE
+      paginatedData = formattedDbResponse.slice(
+        offset,
+        offset + ITEMS_PER_PAGE,
+      )
+    } else {
+      // Current page is in the Google section
+      currentSection = 'google'
+      sectionPage = curPage - dbTotalPages
+      const offset = (sectionPage - 1) * ITEMS_PER_PAGE
+      paginatedData = filteredGoogleResponse.slice(
+        offset,
+        offset + ITEMS_PER_PAGE,
+      )
+    }
 
     return NextResponse.json(
       {
-        data: paginated,
+        page: curPage,
+        pageSize: ITEMS_PER_PAGE,
         totalResults,
-        curPage,
         totalPages,
+        currentSection,
+        dbTotalPages,
+        googleTotalPages,
+        hasPreviousPage: curPage > 1,
+        hasNextPage: curPage < totalPages,
+        data: {
+          database: currentSection === 'database' ? paginatedData : [],
+          google: currentSection === 'google' ? paginatedData : [],
+        },
+        appliedFilters: {
+          type: typeFilters,
+          city: cityFilters,
+          state: stateFilters,
+        },
       },
       { status: 200 },
     )
@@ -107,3 +229,4 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: `[api/search GET] error: ${error}` })
   }
 }
+;``
